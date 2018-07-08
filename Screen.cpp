@@ -1,39 +1,35 @@
 #include<Screen.hpp>
 
 #include<ncurses.h>
-#include<unistd.h>
 #include<string>
 
-Screen::Screen()
+Screen::Screen(const Window& win) : win_(NULL), max_x_(0), max_y_(0)
 {
-  initscr();
-  noecho();
-  curs_set(FALSE);
-  getmaxyx(stdscr, max_y_, max_x_);
+  win_ = win.get_raw();
+  getmaxyx(win_, max_y_, max_x_);
   return;
 }
 
 Screen::~Screen()
 {
-    endwin();
     return;
 }
 
 void Screen::clear()
 {
-    wclear(stdscr);
+    wclear(win_);
     return;
 }
 
 void Screen::update()
 {
-    wrefresh(stdscr);
+    wrefresh(win_);
     return;
 }
 
 bool Screen::print(const char* const ch, const int& x, const int& y)
 {
-    int err = mvwprintw(stdscr, y, x, ch);
+    int err = mvwprintw(win_, y, x, ch);
     return err == OK;
 }
 

@@ -5,12 +5,13 @@
 const int DELAY(35000);
 
 int main(int argc, char *argv[]) {
+    Window win;
   int x = 0,
       y = 0;
   int max_x, max_y;
   int direction = 1;
   int next_x = x;
-  Screen screen;
+  Screen screen(win);
 
   while (1) {
     screen.getSize(max_x, max_y);

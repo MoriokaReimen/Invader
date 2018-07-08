@@ -1,4 +1,6 @@
 #pragma once
+#include<Window.hpp>
+
 #include<string>
 
 enum DISP_TYPE
@@ -26,13 +28,15 @@ struct DispData
 
 class Screen
 {
+    WINDOW* win_;
     int max_x_;
     int max_y_;
 
+    Screen();
     Screen(const Screen& other);
     Screen& operator=(const Screen& other);
 public:
-    Screen();
+    Screen(const Window& win);
     ~Screen();
     void clear();
     void update();
