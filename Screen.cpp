@@ -2,6 +2,7 @@
 
 #include<ncurses.h>
 #include<unistd.h>
+#include<string>
 
 Screen::Screen()
 {
@@ -30,16 +31,15 @@ void Screen::update()
     return;
 }
 
-bool Screen::print(const char* const ch, const Position& pos)
-{
-    int err = mvwprintw(stdscr, pos.y, pos.x, ch);
-    return err == OK;
-}
-
 bool Screen::print(const char* const ch, const int& x, const int& y)
 {
     int err = mvwprintw(stdscr, y, x, ch);
     return err == OK;
+}
+
+bool Screen::print(const std::string& str, const int& x, const int& y)
+{
+    return this->print(str.c_str(), x, y);
 }
 
 void Screen::getSize(int& x, int& y)

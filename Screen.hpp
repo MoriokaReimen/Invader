@@ -1,4 +1,5 @@
 #pragma once
+#include<string>
 
 enum DISP_TYPE
 {
@@ -35,7 +36,7 @@ public:
     ~Screen();
     void clear();
     void update();
-    bool print(const char* const ch, const Position& pos);
     bool print(const char* const ch, const int& x, const int& y);
+    bool print(const std::string& str, const int& x, const int& y);
     void getSize(int& x, int& y);
 };
