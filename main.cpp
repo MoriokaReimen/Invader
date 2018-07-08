@@ -1,3 +1,4 @@
+#include <Window.hpp>
 #include <Screen.hpp>
 
 #include<unistd.h>

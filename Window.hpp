@@ -1,5 +1,6 @@
 #pragma once
-#include<ncurses.h>
+
+typedef struct _win_st WINDOW;
 
 class Window
 {

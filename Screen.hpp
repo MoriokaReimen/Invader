@@ -1,5 +1,4 @@
 #pragma once
-#include<Window.hpp>
 
 #include<string>
 
@@ -25,6 +24,9 @@ struct DispData
     Position pos;
     DISP_TYPE type;
 };
+
+typedef struct _win_st WINDOW;
+class Window;
 
 class Screen
 {
