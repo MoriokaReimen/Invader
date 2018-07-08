@@ -1,36 +1,23 @@
-#include <ncurses.h>
-#include <unistd.h>
+#include <Screen.hpp>
 
-#define DELAY 35000
+#include<unistd.h>
+
+const int DELAY(35000);
 
 int main(int argc, char *argv[]) {
   int x = 0,
       y = 0;
-
-  int max_x = 0,
-      max_y = 0;
-
-  int next_x = 0;
-
+  int max_x, max_y;
   int direction = 1;
-
-  initscr();
-  noecho();
-  curs_set(FALSE);
-
-  getmaxyx(stdscr, max_y, max_x);
-
-  x = max_x / 2;
-  y = max_y / 2;
+  int next_x = x;
+  Screen screen;
 
   while (1) {
-    getmaxyx(stdscr, max_y, max_x);
-
+    screen.getSize(max_x, max_y);
     y = max_y / 2;
-
-    clear();
-    mvprintw(y, x, "o");
-    refresh();
+    screen.clear();
+    screen.print("p", x, y);
+    screen.update();
 
     usleep(DELAY);
 
@@ -43,8 +30,6 @@ int main(int argc, char *argv[]) {
     }
 
   }
-
-  endwin();
 
   return 0;
 }
