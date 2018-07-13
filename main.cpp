@@ -2,40 +2,51 @@
 #include <Screen.hpp>
 #include <UserInput.hpp>
 
+#include<algorithm>
+
 #include<unistd.h>
 
-const int DELAY(35000);
+const int DELAY(15000);
+const int MAX_X(70);
+const int MAX_Y(50);
 
 int main(int argc, char *argv[]) {
     Window win;
   int x = 0,
-      y = 0;
+      y = -1;
   int max_x, max_y;
-  int direction = 1;
-  int next_x = x;
   char ch = 'p';
-  char temp;
   Screen screen(win);
   UserInput input(win);
 
   while (1) {
-    temp = input.get();
-    ch = temp == ERR? ch : temp;
+    ch = input.get();
     screen.getSize(max_x, max_y);
-    y = max_y / 2;
+    switch(ch)
+    {
+        case 'k':
+            y--;
+            break;
+        case 'h':
+            x--;
+            break;
+        case 'j':
+            y++;
+            break;
+        case 'l':
+            x++;
+            break;
+        default:
+            break;
+    }
+    y = std::max(0, std::min(y, MAX_Y));
+    x = std::max(0, std::min(x, MAX_X));
     screen.clear();
-    screen.print(ch, x, y);
+    screen.print('@', x, y);
     screen.update();
 
     usleep(DELAY);
 
-    next_x = x + direction;
-
-    if (next_x >= max_x || next_x < 0) {
-      direction*= -1;
-    } else {
-      x+= direction;
-    }
     if(ch == 'q') break;
 
   }
