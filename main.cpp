@@ -1,5 +1,6 @@
 #include <Window.hpp>
 #include <Screen.hpp>
+#include <UserInput.hpp>
 
 #include<unistd.h>
 
@@ -12,13 +13,18 @@ int main(int argc, char *argv[]) {
   int max_x, max_y;
   int direction = 1;
   int next_x = x;
+  char ch = 'p';
+  char temp;
   Screen screen(win);
+  UserInput input(win);
 
   while (1) {
+    temp = input.get();
+    ch = temp == ERR? ch : temp;
     screen.getSize(max_x, max_y);
     y = max_y / 2;
     screen.clear();
-    screen.print("p", x, y);
+    screen.print(ch, x, y);
     screen.update();
 
     usleep(DELAY);
@@ -30,6 +36,7 @@ int main(int argc, char *argv[]) {
     } else {
       x+= direction;
     }
+    if(ch == 'q') break;
 
   }
 

@@ -4,7 +4,7 @@ LDFLAGS = -lncurses
 .PHONY: clean
 
 main: main.o Screen.o Window.o UserInput.o
-	g++ main.o Screen.o Window.o -o main $(LDFLAGS)
+	g++ main.o Screen.o Window.o UserInput.o -o main $(LDFLAGS)
 
 main.o: main.cpp
 	g++ -c -I. $(CFLAGS) main.cpp -o main.o $(LDFLAGS)

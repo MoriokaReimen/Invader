@@ -1,6 +1,8 @@
 #pragma once
 #include<Window.hpp>
 
+const char ERR(-1);
+
 typedef struct _win_st WINDOW;
 
 class UserInput

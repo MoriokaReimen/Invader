@@ -5,6 +5,7 @@
 UserInput::UserInput(Window& window)
 {
     this->win_ = window.get_raw();
+    nodelay(win_, true);
     return;
 }
 
