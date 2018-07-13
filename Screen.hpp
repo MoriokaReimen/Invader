@@ -42,7 +42,8 @@ public:
     ~Screen();
     void clear();
     void update();
-    bool print(const char* const ch, const int& x, const int& y);
+    bool print(const char* const str, const int& x, const int& y);
     bool print(const std::string& str, const int& x, const int& y);
+    bool print(const char& ch, const int& x, const int& y);
     void getSize(int& x, int& y);
 };

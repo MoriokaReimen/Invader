@@ -28,15 +28,20 @@ void Screen::update()
     return;
 }
 
-bool Screen::print(const char* const ch, const int& x, const int& y)
+bool Screen::print(const char* const str, const int& x, const int& y)
 {
-    int err = mvwprintw(win_, y, x, ch);
+    int err = mvwprintw(win_, y, x, str);
     return err == OK;
 }
 
 bool Screen::print(const std::string& str, const int& x, const int& y)
 {
     return this->print(str.c_str(), x, y);
+}
+
+bool Screen::print(const char& ch, const int& x, const int& y)
+{
+    return mvwaddch(win_, y, x, ch);
 }
 
 void Screen::getSize(int& x, int& y)
