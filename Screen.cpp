@@ -1,4 +1,5 @@
 #include<Screen.hpp>
+#include<Window.hpp>
 
 #include<ncurses.h>
 #include<string>
