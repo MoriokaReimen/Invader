@@ -12,8 +12,8 @@ const int MAX_Y(50);
 
 int main(int argc, char *argv[]) {
     Window win;
-  int x = 0,
-      y = -1;
+  int x = 1,
+      y = 1;
   int max_x, max_y;
   char ch = 'p';
   Screen screen(win);
@@ -39,10 +39,11 @@ int main(int argc, char *argv[]) {
         default:
             break;
     }
-    y = std::max(0, std::min(y, MAX_Y));
-    x = std::max(0, std::min(x, MAX_X));
+    y = std::max(1, std::min(y, MAX_Y));
+    x = std::max(1, std::min(x, MAX_X));
     screen.clear();
     screen.print('@', x, y);
+    screen.printBorder(100, 50);
     screen.update();
 
     usleep(DELAY);
