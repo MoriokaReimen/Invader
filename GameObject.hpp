@@ -12,7 +12,8 @@ enum OBJECT_TYPE
 class GameObject
 {
     int x_, y_;
-    OBJECT_TYPE type;
+    bool is_alive_;
+    OBJECT_TYPE type_;
     GameObject();
 
 public:
@@ -21,4 +22,9 @@ public:
     virtual ~GameObject();
     virtual void update() = 0;
     virtual void draw(Screen& screen);
+
+    /* 他のゲームオブジェクトから呼び出されるメソッド */
+    OBJECT_TYPE getType();
+    void getPosition(int& x, int& y);
+    bool isAlive();
 };
