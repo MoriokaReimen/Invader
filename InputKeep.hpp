@@ -9,9 +9,6 @@ enum KEY_INPUT {
     LEFT
 };
 
-namespace GameSystem
-{
-
 class InputKeep
 {
     std::vector<KEY_INPUT> keep;
@@ -24,6 +21,3 @@ public:
     KEY_INPUT pop();
 };
 
-extern InputKeep input_keep();
-
-};

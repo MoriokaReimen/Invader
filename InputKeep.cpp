@@ -1,10 +1,5 @@
 #include<InputKeep.hpp>
 
-namespace GameSystem
-{
-
-InputKeep input_keep();
-
 InputKeep::InputKeep() : keep(10)
 {
     return;
@@ -28,6 +23,4 @@ KEY_INPUT InputKeep::pop()
     keep.clear();
     return key;
 }
-
-};
 
