@@ -2,8 +2,7 @@
 
 #include<string>
 
-enum DISP_TYPE
-{
+enum DISP_TYPE {
     PLAYER,
     ENEMY,
     LASER,
@@ -13,14 +12,12 @@ enum DISP_TYPE
 };
 
 
-struct Position
-{
+struct Position {
     int x;
     int y;
 };
 
-struct DispData
-{
+struct DispData {
     Position pos;
     DISP_TYPE type;
 };

@@ -4,11 +4,11 @@
 
 Window::Window() : win_(NULL)
 {
-  win_ = initscr();
-  noecho();
-  curs_set(FALSE);
+    win_ = initscr();
+    noecho();
+    curs_set(FALSE);
 
-  return;
+    return;
 }
 
 Window::~Window()

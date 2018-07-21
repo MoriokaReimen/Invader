@@ -9,9 +9,9 @@ const int SCREEN_Y(150);
 
 Screen::Screen(const Window& win) : win_(NULL), max_x_(0), max_y_(0)
 {
-  win_ = win.get_raw();
-  getmaxyx(win_, max_y_, max_x_);
-  return;
+    win_ = win.get_raw();
+    getmaxyx(win_, max_y_, max_x_);
+    return;
 }
 
 Screen::~Screen()
@@ -56,15 +56,13 @@ void Screen::printBorder(const int& x_size, const int& y_size)
     this->print("+", x_size - 1, 0);
 
     /*縦を描画*/
-    for(int col = 1; col < x_size - 1; col++)
-    {
+    for(int col = 1; col < x_size - 1; col++) {
         this->print("-", col, 0);
         this->print("-", col, y_size - 1);
     }
 
     /*横を描画*/
-    for(int row = 1; row < y_size - 1; row++)
-    {
+    for(int row = 1; row < y_size - 1; row++) {
         this->print("|", 0, row);
         this->print("|", x_size - 1, row);
     }

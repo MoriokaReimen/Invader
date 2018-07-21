@@ -1,8 +1,7 @@
 #pragma once
 #include<vector>
 
-enum KEY_INPUT
-{
+enum KEY_INPUT {
     NONE,
     UP,
     DOWN,
@@ -10,7 +9,8 @@ enum KEY_INPUT
     LEFT
 };
 
-namespace GameSystem{
+namespace GameSystem
+{
 
 class InputKeep
 {
@@ -18,10 +18,10 @@ class InputKeep
     InputKeep(const InputKeep& other);
     InputKeep& operator=(const InputKeep& other);
 public:
-        InputKeep();
-        ~InputKeep();
-        void push(const KEY_INPUT& input);
-        KEY_INPUT pop();
+    InputKeep();
+    ~InputKeep();
+    void push(const KEY_INPUT& input);
+    KEY_INPUT pop();
 };
 
 extern InputKeep input_keep();

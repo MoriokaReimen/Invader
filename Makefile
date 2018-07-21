@@ -1,22 +1,32 @@
 CFLAGS = -g -Wall
-LDFLAGS = -lncurses
+         LDFLAGS = -lncurses
 
-.PHONY: clean
+                   .PHONY:
+                   clean
 
-main: main.o Screen.o Window.o UserInput.o
-	g++ main.o Screen.o Window.o UserInput.o -o main $(LDFLAGS)
+                   main:
+                   main.o Screen.o Window.o UserInput.o InputKeep.o
+                   g++ main.o Screen.o Window.o UserInput.o -o main $(LDFLAGS)
 
-main.o: main.cpp
-	g++ -c -I. $(CFLAGS) main.cpp -o main.o $(LDFLAGS)
+                   main.o:
+                   main.cpp
+                   g++ -c -I. $(CFLAGS) main.cpp -o main.o $(LDFLAGS)
 
-Screen.o: Screen.cpp
-	g++ -c -I. $(CFLAGS) Screen.cpp -o Screen.o $(LDFLAGS)
+                   Screen.o:
+                   Screen.cpp
+                   g++ -c -I. $(CFLAGS) Screen.cpp -o Screen.o $(LDFLAGS)
 
-Window.o: Window.cpp
-	g++ -c -I. $(CFLAGS) Window.cpp -o Window.o $(LDFLAGS)
+                   Window.o:
+                   Window.cpp
+                   g++ -c -I. $(CFLAGS) Window.cpp -o Window.o $(LDFLAGS)
 
-UserInput.o: UserInput.cpp
-	g++ -c -I. $(CFLAGS) UserInput.cpp -o UserInput.o $(LDFLAGS)
+                   UserInput.o:
+                   UserInput.cpp
+                   g++ -c -I. $(CFLAGS) UserInput.cpp -o UserInput.o $(LDFLAGS)
 
-clean:
-	rm -rf main *.o
+                   InputKeep.o:
+                   InputKeep.cpp
+                   g++ -c -I. $(CFLAGS) InputKeep.cpp -o InputKeep.o $(LDFLAGS)
+
+                   clean:
+                   rm -rf main *.o
