@@ -5,7 +5,7 @@
 
 void Player::update()
 {
-    InputKeep* input = GameSystem::get_InputKeep();
+    InputKeep* input = GameSystem::getInputKeep();
     const KEY_INPUT key = input->pop();
     switch(key) {
     case UP:

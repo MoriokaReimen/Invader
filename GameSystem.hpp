@@ -1,4 +1,5 @@
 #pragma once
+#include<GameSystem.hpp>
 #include<InputKeep.hpp>
 #include<Field.hpp>
 
@@ -14,6 +15,7 @@ class GameSystem
 
 public:
     static void init();
-    static InputKeep* get_InputKeep();
+    static InputKeep* getInputKeep();
+    static Field* getField();
     static void cleanup();
 };

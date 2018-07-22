@@ -1,5 +1,9 @@
 #include<GameSystem.hpp>
 #include<InputKeep.hpp>
+#include<Field.hpp>
+
+InputKeep* GameSystem::input_keep;
+Field* GameSystem::field;
 
 void GameSystem::init()
 {
@@ -7,9 +11,14 @@ void GameSystem::init()
     field = new Field();
 }
 
-InputKeep* GameSystem::get_InputKeep()
+InputKeep* GameSystem::getInputKeep()
 {
     return input_keep;
+}
+
+Field* GameSystem::getField()
+{
+    return field;
 }
 
 void GameSystem::cleanup()

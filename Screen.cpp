@@ -1,5 +1,6 @@
 #include<Screen.hpp>
 #include<Window.hpp>
+#include<GameSystem.hpp>
 
 #include<ncurses.h>
 #include<string>
@@ -75,5 +76,18 @@ void Screen::getSize(int& x, int& y)
     getmaxyx(win_, max_y_, max_x_);
     x = this->max_x_;
     y = this->max_y_;
+    return;
+}
+
+void Screen::drawObjects()
+{
+    Field* field = GameSystem::getField();
+    for(auto it = field->objects.begin();
+        it != field->objects.end();
+        it++)
+    {
+        (*it)->draw(*this);
+    }
+
     return;
 }
