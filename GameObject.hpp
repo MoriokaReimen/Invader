@@ -2,6 +2,7 @@
 
 class GameObject
 {
+protected:
     int x_;
     int y_;
     bool is_alive_;
