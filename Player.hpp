@@ -9,5 +9,5 @@ class Player : public GameObject
 public:
     void update();
     ~Player();
-    void draw();
+    void draw(Screen& screen);
 };

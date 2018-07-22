@@ -4,6 +4,7 @@
 void GameSystem::init()
 {
     input_keep = new InputKeep();
+    field = new Field();
 }
 
 InputKeep* GameSystem::get_InputKeep()
@@ -14,4 +15,5 @@ InputKeep* GameSystem::get_InputKeep()
 void GameSystem::cleanup()
 {
     delete input_keep;
+    delete field;
 }

@@ -1,22 +1,23 @@
 #include<Player.hpp>
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
+#include<Screen.hpp>
 
 void Player::update()
 {
     InputKeep* input = GameSystem::get_InputKeep();
-    const char ch = input->pop();
-    switch(ch) {
-    case 'k':
+    const KEY_INPUT key = input->pop();
+    switch(key) {
+    case UP:
         this->y_--;
         break;
-    case 'h':
+    case DOWN:
         this->x_--;
         break;
-    case 'j':
+    case RIGHT:
         this->y_++;
         break;
-    case 'l':
+    case LEFT:
         this->x_++;
         break;
     default:
@@ -28,7 +29,8 @@ void Player::update()
 Player::~Player()
 {}
 
-void Player::draw()
+void Player::draw(Screen& screen)
 {
+    screen.print("@", this->x_, this->y_);
     return;
 }

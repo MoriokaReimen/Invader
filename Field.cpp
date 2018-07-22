@@ -1,16 +1,30 @@
 #include<Field.hpp>
 
+#include<memory>
 #include<vector>
+#include<Player.hpp>
+#include<GameObject.hpp>
+
 const int FIELD_X(150);
 const int FIELD_Y(150);
 
 Field::Field() : x(FIELD_X), y(FIELD_Y)
 {
+    this->objects.push_back(std::shared_ptr<GameObject>(new Player));
 
 }
 
 void Field::update()
 {
+    typedef std::vector<std::shared_ptr<GameObject>>::iterator ObjectIterator;
+    for(ObjectIterator it = this->objects.begin();
+        it != this->objects.end();
+        it++)
+    {
+        (*it)->update();
+
+    }
+
     return;
 }
 void Field::display()

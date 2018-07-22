@@ -1,9 +1,11 @@
 #pragma once
 #include<InputKeep.hpp>
+#include<Field.hpp>
 
 class GameSystem
 {
     static InputKeep* input_keep;
+    static Field* field;
 
     GameSystem();
     GameSystem(const GameSystem& other);

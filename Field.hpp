@@ -1,6 +1,8 @@
 #pragma once
 
 #include<vector>
+#include<memory>
+#include<GameObject.hpp>
 
 class Field
 {
@@ -8,9 +10,12 @@ class Field
     int x;
     int y;
 public:
+    std::vector<std::shared_ptr<GameObject>> objects;
+
     Field();
 
     void update();
+    void draw();
     void display();
 
     int get_x() const;

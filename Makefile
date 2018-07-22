@@ -1,4 +1,4 @@
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -std=c++11
 LDFLAGS = -lncurses
 
 .PHONY:
