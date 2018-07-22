@@ -17,7 +17,8 @@ class InputKeep
 public:
     InputKeep();
     ~InputKeep();
-    void push(const KEY_INPUT& input);
-    KEY_INPUT pop();
+    void store(const KEY_INPUT& input);
+    KEY_INPUT get();
+    void clear();
 };
 

@@ -13,5 +13,5 @@ class UserInput
 public:
     UserInput(Window& window);
     ~UserInput();
-    char get();
+    char store();
 };

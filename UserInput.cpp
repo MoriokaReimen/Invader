@@ -1,6 +1,8 @@
 #include<UserInput.hpp>
+#include<GameSystem.hpp>
 
 #include<ncurses.h>
+#include<InputKeep.hpp>
 
 UserInput::UserInput(Window& window)
 {
@@ -14,8 +16,25 @@ UserInput::~UserInput()
     /*NO OP*/
 }
 
-char UserInput::get()
+char UserInput::store()
 {
-    return wgetch(win_);
+    const char ch =  wgetch(win_);
+    InputKeep* keep = GameSystem::getInputKeep();
+    switch(ch) {
+    case 'k':
+        keep->store(UP);
+        break;
+    case 'j':
+        keep->store(DOWN);
+        break;
+    case 'h':
+        keep->store(RIGHT);
+        break;
+    case 'l':
+        keep->store(LEFT);
+        break;
+    }
+
+    return ch;
 }
 

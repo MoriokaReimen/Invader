@@ -6,16 +6,16 @@
 void Player::update()
 {
     InputKeep* input = GameSystem::getInputKeep();
-    const KEY_INPUT key = input->pop();
+    const KEY_INPUT key = input->get();
     switch(key) {
     case UP:
         this->y_--;
         break;
     case DOWN:
-        this->x_--;
+        this->y_++;
         break;
     case RIGHT:
-        this->y_++;
+        this->x_--;
         break;
     case LEFT:
         this->x_++;

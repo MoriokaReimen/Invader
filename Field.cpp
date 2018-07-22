@@ -19,8 +19,7 @@ void Field::update()
     typedef std::vector<std::shared_ptr<GameObject>>::iterator ObjectIterator;
     for(ObjectIterator it = this->objects.begin();
         it != this->objects.end();
-        it++)
-    {
+        it++) {
         (*it)->update();
 
     }

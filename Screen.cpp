@@ -84,8 +84,7 @@ void Screen::drawObjects()
     Field* field = GameSystem::getField();
     for(auto it = field->objects.begin();
         it != field->objects.end();
-        it++)
-    {
+        it++) {
         (*it)->draw(*this);
     }
 

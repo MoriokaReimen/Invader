@@ -1,6 +1,7 @@
 #include <Window.hpp>
 #include <Screen.hpp>
 #include <UserInput.hpp>
+#include<GameSystem.hpp>
 
 #include<algorithm>
 
@@ -13,44 +14,30 @@ const int MAX_Y(50);
 int main(int argc, char *argv[])
 {
     Window win;
-    int x = 1,
-        y = 1;
-    int max_x, max_y;
     char ch = 'p';
     Screen screen(win);
     UserInput input(win);
+    GameSystem::init();
+    Field* field = GameSystem::getField();
+    InputKeep* keep = GameSystem::getInputKeep();
 
     while (1) {
-        ch = input.get();
-        screen.getSize(max_x, max_y);
-        switch(ch) {
-        case 'k':
-            y--;
-            break;
-        case 'h':
-            x--;
-            break;
-        case 'j':
-            y++;
-            break;
-        case 'l':
-            x++;
-            break;
-        default:
-            break;
-        }
-        y = std::max(1, std::min(y, MAX_Y));
-        x = std::max(1, std::min(x, MAX_X));
+        ch = input.store();
+        field->update();
+
         screen.clear();
-        screen.print('@', x, y);
         screen.printBorder(100, 50);
+        screen.drawObjects();
         screen.update();
+        keep->clear();
 
         usleep(DELAY);
 
         if(ch == 'q') break;
 
     }
+
+    GameSystem::cleanup();
 
     return 0;
 }

@@ -8,19 +8,25 @@ InputKeep::InputKeep() : keep(10)
 InputKeep::~InputKeep()
 {}
 
-void InputKeep::push(const KEY_INPUT& input)
+void InputKeep::store(const KEY_INPUT& input)
 {
     keep.push_back(input);
     return;
 }
 
-KEY_INPUT InputKeep::pop()
+KEY_INPUT InputKeep::get()
 {
     KEY_INPUT key(NONE);
     if(!keep.empty()) {
         key = keep.back();
     }
-    keep.clear();
+
     return key;
 }
 
+void InputKeep::clear()
+{
+    keep.clear();
+
+    return;
+}
