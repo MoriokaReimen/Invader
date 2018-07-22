@@ -7,6 +7,7 @@
 class Player : public GameObject
 {
 public:
+    Player(const int& x, const int& y);
     void update();
     ~Player();
     void draw(Screen& screen);

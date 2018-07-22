@@ -1,6 +1,6 @@
 #include<GameObject.hpp>
 
-GameObject::GameObject() : x_(0), y_(0), is_alive_(true)
+GameObject::GameObject(const int& x, const int& y) : x_(x), y_(y), is_alive_(true)
 {
     return;
 }

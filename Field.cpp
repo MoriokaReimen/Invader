@@ -10,7 +10,7 @@ const int FIELD_Y(150);
 
 Field::Field() : x(FIELD_X), y(FIELD_Y)
 {
-    this->objects.push_back(std::shared_ptr<GameObject>(new Player));
+    this->objects.push_back(std::shared_ptr<GameObject>(new Player(50, 50)));
 
 }
 

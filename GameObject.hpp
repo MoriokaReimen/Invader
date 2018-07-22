@@ -9,7 +9,7 @@ protected:
     bool is_alive_;
 
 public:
-    GameObject();
+    GameObject(const int& x, const int& y);
     virtual ~GameObject() = 0;
     virtual void update() = 0;
     virtual void draw(Screen& screen) = 0;

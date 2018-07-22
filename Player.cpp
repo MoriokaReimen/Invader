@@ -3,6 +3,9 @@
 #include<GameSystem.hpp>
 #include<Screen.hpp>
 
+Player::Player(const int& x, const int& y) : GameObject(x, y)
+{
+}
 void Player::update()
 {
     InputKeep* input = GameSystem::getInputKeep();
