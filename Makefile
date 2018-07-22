@@ -4,7 +4,7 @@ LDFLAGS = -lncurses
 .PHONY:
 	clean
 
-main: main.o Screen.o Window.o UserInput.o InputKeep.o GameSystem.o Field.o
+main: main.o Screen.o Window.o UserInput.o InputKeep.o GameSystem.o Field.o GameObject.o
 	g++ main.o Screen.o Window.o UserInput.o -o main $(LDFLAGS)
 
 main.o: main.cpp
@@ -27,6 +27,9 @@ InputKeep.o: InputKeep.cpp
 
 Field.o: Field.cpp
 	g++ -c -I. $(CFLAGS) Field.cpp -o Field.o $(LDFLAGS)
+
+GameObject.o: GameObject.cpp
+	g++ -c -I. $(CFLAGS) GameObject.cpp -o GameObject.o $(LDFLAGS)
 
 clean:
 	rm -rf main *.o
