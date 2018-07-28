@@ -101,3 +101,20 @@ std::shared_ptr<GameObject> Field::getObject(const int& x, const int& y)
     return nullptr;
 }
 
+bool Field::checkPosition(const int& x, const int& y)
+{
+    int pos_x(0);
+    int pos_y(0);
+
+    for(auto it = this->objects_.begin();
+            it != this->objects_.end();
+            it++)
+    {
+        (*it)->getPosition(pos_x, pos_y);
+        if(pos_x == x && pos_y == y)
+            return true;
+    }
+
+    return false;
+}
+
