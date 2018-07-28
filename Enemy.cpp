@@ -53,7 +53,7 @@ void Enemy::draw(Screen& screen)
 void Enemy::shoot(const  int&x, const int& y)
 {
     Field* field = GameSystem::getField();
-    field->addObject(std::shared_ptr<GameObject>(new Bullet(x, y, 1)));
+    field->addObject(std::shared_ptr<GameObject>(new Bullet(x, y+1, 1)));
 
     return;
 }

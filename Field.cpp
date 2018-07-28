@@ -14,9 +14,7 @@ Field::Field() : x_(FIELD_X), y_(FIELD_Y)
 {
     this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(50, 38)));
 
-    for(int i = 0; i < 80; i++)
-        for(int j = 0; j < 3; j++)
-            this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(i, j)));
+    this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(50, 3)));
 
 }
 
@@ -90,15 +88,14 @@ std::shared_ptr<GameObject> Field::getObject(const int& x, const int& y)
     int pos_y(0);
 
     for(auto it = this->objects_.begin();
-            it != this->objects_.end();
-            it++)
-    {
+        it != this->objects_.end();
+        it++) {
         (*it)->getPosition(pos_x, pos_y);
         if(pos_x == x && pos_y == y)
             return *it;
     }
 
-    return nullptr;
+    return std::shared_ptr<GameObject>();
 }
 
 bool Field::checkPosition(const int& x, const int& y)
@@ -107,9 +104,8 @@ bool Field::checkPosition(const int& x, const int& y)
     int pos_y(0);
 
     for(auto it = this->objects_.begin();
-            it != this->objects_.end();
-            it++)
-    {
+        it != this->objects_.end();
+        it++) {
         (*it)->getPosition(pos_x, pos_y);
         if(pos_x == x && pos_y == y)
             return true;

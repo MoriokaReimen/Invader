@@ -13,8 +13,8 @@ GameObject::~GameObject()
 
 void GameObject::getPosition(int& x, int& y)
 {
-    this->x_ = x;
-    this->y_ = y;
+    x = this->x_;
+    y = this->y_;
     return;
 }
 
@@ -26,4 +26,11 @@ bool GameObject::isAlive()
 OBJECT_TYPE GameObject::getType()
 {
     return this->type_;
+}
+
+void GameObject::kill()
+{
+    this->is_alive_ = false;
+
+    return;
 }

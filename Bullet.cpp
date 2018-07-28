@@ -10,6 +10,12 @@ void Bullet::update()
 {
     Field* field = GameSystem::getField();
     this->y_ += direction_ * 0.1;
+    auto hit_object = field->getObject(this->x_, this->y_);
+
+    if(hit_object != nullptr && hit_object.get() != this) {
+        hit_object->kill();
+
+    }
 
     if(!field->is_on_field(this->x_, this->y_)) {
         this->is_alive_ = false;

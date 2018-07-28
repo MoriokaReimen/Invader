@@ -1,8 +1,7 @@
 #pragma once
 #include<Screen.hpp>
 
-enum OBJECT_TYPE
-{
+enum OBJECT_TYPE {
     PLAYER,
     ENEMY,
     BULLET
@@ -25,5 +24,6 @@ public:
     void getPosition(int& x, int& y);
     bool isAlive();
     OBJECT_TYPE getType();
+    void kill();
 
 };
