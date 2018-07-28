@@ -2,7 +2,7 @@
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
 
-Bullet::Bullet(const int& x, const int& y, const int& direction) : GameObject(x, y), direction_(direction)
+Bullet::Bullet(const int& x, const int& y, const int& direction) : GameObject(x, y, BULLET), direction_(direction)
 {
 }
 

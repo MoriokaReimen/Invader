@@ -6,7 +6,7 @@
 
 #include<memory>
 
-Player::Player(const int& x, const int& y) : GameObject(x, y)
+Player::Player(const int& x, const int& y) : GameObject(x, y, PLAYER)
 {
 }
 

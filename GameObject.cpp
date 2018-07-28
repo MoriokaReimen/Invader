@@ -1,6 +1,7 @@
 #include<GameObject.hpp>
 
-GameObject::GameObject(const int& x, const int& y) : x_(x), y_(y), is_alive_(true)
+GameObject::GameObject(const int& x, const int& y, const OBJECT_TYPE& type) :
+    x_(x), y_(y), is_alive_(true), type_(type)
 {
     return;
 }
@@ -20,4 +21,9 @@ void GameObject::getPosition(int& x, int& y)
 bool GameObject::isAlive()
 {
     return is_alive_;
+}
+
+OBJECT_TYPE GameObject::getType()
+{
+    return this->type_;
 }

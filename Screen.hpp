@@ -2,26 +2,6 @@
 
 #include<string>
 
-enum DISP_TYPE {
-    PLAYER,
-    ENEMY,
-    LASER,
-    EXPLOSION,
-
-    DISP_TYPE_COUNT
-};
-
-
-struct Position {
-    int x;
-    int y;
-};
-
-struct DispData {
-    Position pos;
-    DISP_TYPE type;
-};
-
 typedef struct _win_st WINDOW;
 class Window;
 

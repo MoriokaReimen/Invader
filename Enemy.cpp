@@ -8,7 +8,7 @@
 #include<random>
 
 Enemy::Enemy(const int& x, const int& y) :
-    GameObject(x, y), generator_(), distribution_(0, 100)
+    GameObject(x, y, ENEMY), generator_(), distribution_(0, 100)
 {
 }
 
