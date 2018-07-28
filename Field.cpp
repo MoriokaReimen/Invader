@@ -12,9 +12,11 @@ const int FIELD_Y(40);
 
 Field::Field() : x_(FIELD_X), y_(FIELD_Y)
 {
-    this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(50, 38)));
+    this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(40, 38)));
 
-    this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(50, 3)));
+    for(int i = 35; i < 45; ++i)
+    for(int j = 1; j < 4; ++j)
+    this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(i, j)));
 
 }
 
