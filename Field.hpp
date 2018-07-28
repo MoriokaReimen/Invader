@@ -7,19 +7,22 @@
 class Field
 {
 
-    int x;
-    int y;
+    int x_;
+    int y_;
+    std::vector<std::shared_ptr<GameObject>> objects_;
+    std::vector<std::shared_ptr<GameObject>> new_objects_;
 public:
-    std::vector<std::shared_ptr<GameObject>> objects;
 
     Field();
 
     void update();
     void draw();
-    void display();
+    void draw(Screen& screen);
+    void reap();
 
     int get_x() const;
     int get_y() const;
     bool is_on_field(const int& x, const int& y) const;
+    void addObject(std::shared_ptr<GameObject>&& object);
 
 };

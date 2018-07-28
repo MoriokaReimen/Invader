@@ -6,7 +6,8 @@ enum KEY_INPUT {
     UP,
     DOWN,
     RIGHT,
-    LEFT
+    LEFT,
+    SHOOT
 };
 
 class InputKeep

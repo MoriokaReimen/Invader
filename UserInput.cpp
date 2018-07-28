@@ -33,6 +33,9 @@ char UserInput::store()
     case 'l':
         keep->store(LEFT);
         break;
+    case 's':
+        keep->store(SHOOT);
+        break;
     }
 
     return ch;

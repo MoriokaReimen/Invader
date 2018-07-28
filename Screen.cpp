@@ -50,22 +50,26 @@ bool Screen::print(const char& ch, const int& x, const int& y)
 
 void Screen::printBorder(const int& x_size, const int& y_size)
 {
+    Field* field = GameSystem::getField();
+
+    max_x_ = field->get_x();
+    max_y_ = field->get_y();
     /*四隅を描画*/
     this->print("+", 0, 0);
-    this->print("+", 0, y_size - 1);
-    this->print("+", x_size - 1, y_size - 1);
-    this->print("+", x_size - 1, 0);
+    this->print("+", 0, max_x_ - 1);
+    this->print("+", max_x_ - 1, max_y_ - 1);
+    this->print("+", max_x_ - 1, 0);
 
     /*縦を描画*/
-    for(int col = 1; col < x_size - 1; col++) {
+    for(int col = 1; col < max_x_ - 1; col++) {
         this->print("-", col, 0);
-        this->print("-", col, y_size - 1);
+        this->print("-", col, max_y_ - 1);
     }
 
     /*横を描画*/
-    for(int row = 1; row < y_size - 1; row++) {
+    for(int row = 1; row < max_y_ - 1; row++) {
         this->print("|", 0, row);
-        this->print("|", x_size - 1, row);
+        this->print("|", max_x_ - 1, row);
     }
 
     return;
@@ -82,11 +86,7 @@ void Screen::getSize(int& x, int& y)
 void Screen::drawObjects()
 {
     Field* field = GameSystem::getField();
-    for(auto it = field->objects.begin();
-        it != field->objects.end();
-        it++) {
-        (*it)->draw(*this);
-    }
+    field->draw(*this);
 
     return;
 }

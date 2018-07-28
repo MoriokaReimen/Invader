@@ -11,4 +11,5 @@ public:
     void update();
     ~Player();
     void draw(Screen& screen);
+    void shoot(const int& x, const int& y);
 };

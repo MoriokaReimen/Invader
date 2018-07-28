@@ -2,31 +2,47 @@
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
 #include<Screen.hpp>
+#include<Bullet.hpp>
+
+#include<memory>
 
 Player::Player(const int& x, const int& y) : GameObject(x, y)
 {
 }
+
 void Player::update()
 {
     InputKeep* input = GameSystem::getInputKeep();
+    Field* field = GameSystem::getField();
     const KEY_INPUT key = input->get();
+    int next_x(x_), next_y(y_);
+
     switch(key) {
     case UP:
-        this->y_--;
+        next_y--;
         break;
     case DOWN:
-        this->y_++;
+        next_y++;
         break;
     case RIGHT:
-        this->x_--;
+        next_x--;
         break;
     case LEFT:
-        this->x_++;
+        next_x++;
+        break;
+    case SHOOT:
+        this->shoot(x_, y_);
         break;
     default:
         break;
     }
 
+    if(field->is_on_field(next_x, next_y)) {
+        x_ = next_x;
+        y_ = next_y;
+    }
+
+    return;
 }
 
 Player::~Player()
@@ -35,5 +51,13 @@ Player::~Player()
 void Player::draw(Screen& screen)
 {
     screen.print("@", this->x_, this->y_);
+    return;
+}
+
+void Player::shoot(const  int&x, const int& y)
+{
+    Field* field = GameSystem::getField();
+    field->addObject(std::shared_ptr<GameObject>(new Bullet(x, y - 1, -1)));
+
     return;
 }

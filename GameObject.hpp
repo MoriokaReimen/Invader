@@ -4,8 +4,8 @@
 class GameObject
 {
 protected:
-    int x_;
-    int y_;
+    double x_;
+    double y_;
     bool is_alive_;
 
 public:
