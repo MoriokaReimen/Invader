@@ -24,5 +24,6 @@ public:
     int get_y() const;
     bool is_on_field(const int& x, const int& y) const;
     void addObject(std::shared_ptr<GameObject>&& object);
+    std::shared_ptr<GameObject> getObject(const int& x, const int& y);
 
 };
