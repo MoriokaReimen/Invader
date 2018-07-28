@@ -25,4 +25,4 @@ main: $(OBJ)
 	g++ $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf main *.o
+	rm -rf main *.o *.orig
