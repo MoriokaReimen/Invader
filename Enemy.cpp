@@ -33,7 +33,7 @@ void Enemy::update()
         break;
     }
 
-    if(field->is_on_field(next_x, next_y)) {
+    if(field->is_on_field(next_x, next_y) && !field->checkPosition(next_x, next_y)) {
         x_ = next_x;
         y_ = next_y;
     }
