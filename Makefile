@@ -12,6 +12,7 @@ SRC = \
 	GameSystem.cpp \
 	Bullet.cpp \
 	Enemy.cpp \
+	GameStatus.cpp \
 	main.cpp
 OBJ = $(SRC:.cpp=.o)
 
