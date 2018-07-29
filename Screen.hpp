@@ -10,6 +10,7 @@ enum COLOR
     PLAYER_COLOR,
     ENEMY_COLOR,
     BULLET_COLOR,
+    MESSAGE_COLOR,
 };
 
 class Screen
@@ -36,4 +37,6 @@ public:
     void printBorder();
     void getSize(int& x, int& y);
     void drawObjects();
+    void printGameOver();
+    void printPlayerWin();
 };

@@ -17,6 +17,7 @@ Screen::Screen(const Window& win) : win_(NULL), max_x_(0), max_y_(0)
     init_pair(PLAYER_COLOR, COLOR_WHITE, COLOR_BLACK);
     init_pair(ENEMY_COLOR, COLOR_RED, COLOR_BLACK);
     init_pair(BULLET_COLOR, COLOR_BLUE, COLOR_BLACK);
+    init_pair(MESSAGE_COLOR, COLOR_BLACK, COLOR_WHITE);
     return;
 }
 
@@ -31,8 +32,14 @@ void Screen::clear()
     return;
 }
 
-void Screen::update()
-{
+void Screen::update() {
+    GameStatus* status = GameSystem::getStatus();
+    if(status->isGameOver())
+        this->printGameOver();
+
+    if(status->isPlayerWin())
+        this->printPlayerWin();
+
     wrefresh(win_);
     return;
 }
@@ -84,7 +91,7 @@ void Screen::printBorder(const int& x_size, const int& y_size)
     max_y_ = field->get_y();
     /*四隅を描画*/
     this->print("+", 0, 0);
-    this->print("+", 0, max_x_ - 1);
+    this->print("+", 0, max_y_ - 1);
     this->print("+", max_x_ - 1, max_y_ - 1);
     this->print("+", max_x_ - 1, 0);
 
@@ -117,4 +124,18 @@ void Screen::drawObjects()
     field->draw(*this);
 
     return;
+}
+
+void Screen::printGameOver()
+{
+    std::string message("GAME OVER");
+    this->print(message, 30, 20, MESSAGE_COLOR);
+
+}
+
+void Screen::printPlayerWin()
+{
+    std::string message("PLAYER WIN");
+    this->print(message, 30, 20, MESSAGE_COLOR);
+
 }

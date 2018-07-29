@@ -18,10 +18,17 @@ Field::Field() : x_(FIELD_X), y_(FIELD_Y)
         for(int j = 1; j < 4; ++j)
             this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(i, j)));
 
+    return;
 }
 
 void Field::update()
 {
+    GameStatus* status = GameSystem::getStatus();
+    if(0 == this->countEnemy())
+    {
+        status -> setPlayerWin();
+    }
+
     int object_num = this->objects_.size();
     for(int c = 0; c < object_num; c++)
         this->objects_[c]->update();
@@ -114,5 +121,20 @@ bool Field::checkPosition(const int& x, const int& y) const
     }
 
     return false;
+}
+
+int Field::countEnemy() const
+{
+    int count(0);
+    OBJECT_TYPE type;
+
+    for(auto it = this->objects_.begin();
+            it != this->objects_.end();
+            it++) {
+        type = (*it)->getType();
+        if(type == ENEMY) count++;
+    }
+
+    return count;
 }
 

@@ -26,5 +26,6 @@ public:
     void addObject(std::shared_ptr<GameObject>&& object);
     std::shared_ptr<GameObject> getObject(const int& x, const int& y);
     bool checkPosition(const int& x, const int& y) const;
+    int countEnemy() const;
 
 };

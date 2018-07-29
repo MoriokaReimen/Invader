@@ -23,9 +23,11 @@ bool GameStatus::isPlayerWin() const
 void GameStatus::setGameOver()
 {
     is_game_over_ = true;
+    return;
 }
 
 void GameStatus::setPlayerWin()
 {
     is_player_win_ = true;
+    return;
 }

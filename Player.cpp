@@ -61,3 +61,12 @@ void Player::shoot(const  int&x, const int& y)
 
     return;
 }
+
+void Player::kill()
+{
+    GameObject::kill();
+    GameStatus* status = GameSystem::getStatus();
+    status->setGameOver();
+
+    return;
+}

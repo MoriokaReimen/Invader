@@ -20,10 +20,9 @@ public:
     virtual ~GameObject() = 0;
     virtual void update() = 0;
     virtual void draw(Screen& screen) = 0;
+    virtual void kill();
 
     void getPosition(int& x, int& y);
     bool isAlive();
     OBJECT_TYPE getType();
-    void kill();
-
 };
