@@ -46,7 +46,7 @@ Enemy::~Enemy()
 
 void Enemy::draw(Screen& screen)
 {
-    screen.print("M", this->x_, this->y_);
+    screen.print("M", this->x_, this->y_, ENEMY_COLOR);
     return;
 }
 

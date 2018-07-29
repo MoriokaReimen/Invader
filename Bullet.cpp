@@ -29,7 +29,7 @@ Bullet::~Bullet()
 
 void Bullet::draw(Screen& screen)
 {
-    screen.print("|", this->x_, this->y_);
+    screen.print("|", this->x_, this->y_, BULLET_COLOR);
 
     return;
 }

@@ -8,10 +8,15 @@
 const int SCREEN_X(250);
 const int SCREEN_Y(150);
 
+
 Screen::Screen(const Window& win) : win_(NULL), max_x_(0), max_y_(0)
 {
     win_ = win.get_raw();
     getmaxyx(win_, max_y_, max_x_);
+    start_color();
+    init_pair(PLAYER_COLOR, COLOR_WHITE, COLOR_BLACK);
+    init_pair(ENEMY_COLOR, COLOR_RED, COLOR_BLACK);
+    init_pair(BULLET_COLOR, COLOR_BLUE, COLOR_BLACK);
     return;
 }
 
@@ -38,14 +43,37 @@ bool Screen::print(const char* const str, const int& x, const int& y)
     return err == OK;
 }
 
+bool Screen::print(const char* const str, const int& x, const int& y, const COLOR& color)
+{
+    attron(COLOR_PAIR(color));
+    int err = mvwprintw(win_, y, x, str);
+    attroff(COLOR_PAIR(color));
+    return err == OK;
+}
+
 bool Screen::print(const std::string& str, const int& x, const int& y)
 {
     return this->print(str.c_str(), x, y);
 }
 
+bool Screen::print(const std::string& str, const int& x, const int& y, const COLOR& color)
+{
+    bool err = this->print(str.c_str(), x, y, color);
+    return err;
+}
+
 bool Screen::print(const char& ch, const int& x, const int& y)
 {
     return mvwaddch(win_, y, x, ch);
+}
+
+bool Screen::print(const char& ch, const int& x, const int& y, const COLOR& color)
+{
+    bool ret(false);
+    attron(COLOR_PAIR(color));
+    ret = mvwaddch(win_, y, x, ch);
+    attroff(COLOR_PAIR(color));
+    return ret;
 }
 
 void Screen::printBorder(const int& x_size, const int& y_size)

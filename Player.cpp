@@ -50,7 +50,7 @@ Player::~Player()
 
 void Player::draw(Screen& screen)
 {
-    screen.print("@", this->x_, this->y_);
+    screen.print("@", this->x_, this->y_, PLAYER_COLOR);
     return;
 }
 
