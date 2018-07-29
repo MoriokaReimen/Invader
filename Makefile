@@ -15,8 +15,6 @@ SRC = \
 	main.cpp
 OBJ = $(SRC:.cpp=.o)
 
-.PHONY:
-	clean
 
 main: $(OBJ)
 	g++ $^ -o $@ $(LDFLAGS)
@@ -24,5 +22,10 @@ main: $(OBJ)
 %.o: %.cpp
 	g++ $(CFLAGS) -c $< -o $@
 
+.PHONY: clean astyle
+
 clean:
 	rm -rf main *.o *.orig
+
+astyle:
+	astyle *.hpp *.cpp

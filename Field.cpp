@@ -15,8 +15,8 @@ Field::Field() : x_(FIELD_X), y_(FIELD_Y)
     this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(40, 38)));
 
     for(int i = 25; i < 55; ++i)
-    for(int j = 1; j < 4; ++j)
-    this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(i, j)));
+        for(int j = 1; j < 4; ++j)
+            this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(i, j)));
 
 }
 
@@ -37,8 +37,8 @@ void Field::update()
 void Field::draw(Screen& screen)
 {
     for(auto it = this->objects_.begin();
-        it != this->objects_.end();
-        it++) {
+            it != this->objects_.end();
+            it++) {
         (*it)->draw(screen);
     }
     return;
@@ -90,8 +90,8 @@ std::shared_ptr<GameObject> Field::getObject(const int& x, const int& y)
     int pos_y(0);
 
     for(auto it = this->objects_.begin();
-        it != this->objects_.end();
-        it++) {
+            it != this->objects_.end();
+            it++) {
         (*it)->getPosition(pos_x, pos_y);
         if(pos_x == x && pos_y == y)
             return *it;
@@ -106,8 +106,8 @@ bool Field::checkPosition(const int& x, const int& y) const
     int pos_y(0);
 
     for(auto it = this->objects_.begin();
-        it != this->objects_.end();
-        it++) {
+            it != this->objects_.end();
+            it++) {
         (*it)->getPosition(pos_x, pos_y);
         if(pos_x == x && pos_y == y)
             return true;
