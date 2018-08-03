@@ -31,3 +31,15 @@ void GameStatus::setPlayerWin()
     is_player_win_ = true;
     return;
 }
+
+void GameStatus::addScore(const int& score)
+{
+    this->score_ += score;
+
+    return;
+}
+
+int GameStatus::getScore()
+{
+    return this->score_;
+}

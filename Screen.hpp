@@ -39,4 +39,5 @@ public:
     void drawObjects();
     void printGameOver();
     void printPlayerWin();
+    void printScore();
 };

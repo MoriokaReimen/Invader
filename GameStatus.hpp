@@ -15,4 +15,6 @@ public:
     bool isPlayerWin() const;
     void setGameOver();
     void setPlayerWin();
+    void addScore(const int& score);
+    int getScore();
 };

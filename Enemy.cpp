@@ -16,6 +16,11 @@ void Enemy::update()
 {
     const Field* field = GameSystem::getField();
     int next_x(x_), next_y(y_);
+
+    GameStatus* status = GameSystem::getStatus();
+    if(this->y_ > (field->get_y() - 5))
+        status->setGameOver();
+
     const int next_action = distribution_(generator_) % 200;
     switch(next_action) {
     case 1:
@@ -56,4 +61,14 @@ void Enemy::shoot(const  int&x, const int& y)
     field->addObject(std::shared_ptr<GameObject>(new Bullet(x, y+1, 1)));
 
     return;
+}
+
+void Enemy::kill()
+{
+    GameStatus* status = GameSystem::getStatus();
+    GameObject::kill();
+    status->addScore(30);
+
+    return;
+
 }

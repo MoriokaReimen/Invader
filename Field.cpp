@@ -14,8 +14,8 @@ Field::Field() : x_(FIELD_X), y_(FIELD_Y)
 {
     this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(40, 38)));
 
-    for(int i = 25; i < 55; ++i)
-        for(int j = 1; j < 4; ++j)
+    for(int i = 15; i < 75; ++i)
+        for(int j = 1; j < 6; ++j)
             this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(i, j)));
 
     return;

@@ -40,6 +40,8 @@ void Screen::update() {
     if(status->isPlayerWin())
         this->printPlayerWin();
 
+    printScore();
+
     wrefresh(win_);
     return;
 }
@@ -129,13 +131,23 @@ void Screen::drawObjects()
 void Screen::printGameOver()
 {
     std::string message("GAME OVER");
-    this->print(message, 30, 20, MESSAGE_COLOR);
+    this->print(message, 30, 18, MESSAGE_COLOR);
 
 }
 
 void Screen::printPlayerWin()
 {
     std::string message("PLAYER WIN");
-    this->print(message, 30, 20, MESSAGE_COLOR);
+    this->print(message, 30, 18, MESSAGE_COLOR);
+
+}
+
+void Screen::printScore()
+{
+    char msg[100];
+    GameStatus* status = GameSystem::getStatus();
+    const int score = status->getScore();
+    std::snprintf(msg, sizeof(msg), "Score: %d", score);
+    this->print(msg, 90, 3);
 
 }
