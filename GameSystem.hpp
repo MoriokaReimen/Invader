@@ -6,7 +6,6 @@
  * \brief GameSystemクラスの宣言
  */
 #pragma once
-#include<GameSystem.hpp>
 #include<GameStatus.hpp>
 #include<InputKeep.hpp>
 #include<Field.hpp>

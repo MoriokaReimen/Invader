@@ -8,7 +8,6 @@
 #pragma once
 
 #include<GameObject.hpp>
-#include<Screen.hpp>
 
 /*!
  * \class Player

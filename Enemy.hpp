@@ -8,7 +8,6 @@
 #pragma once
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
-#include<Screen.hpp>
 
 #include<random>
 
