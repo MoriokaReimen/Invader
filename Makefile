@@ -30,3 +30,6 @@ clean:
 
 astyle:
 	astyle *.hpp *.cpp
+
+doxygen:
+	doxygen .

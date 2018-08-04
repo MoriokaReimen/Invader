@@ -10,6 +10,11 @@
 #include<Screen.hpp>
 
 
+/*!
+ * \class Bullet
+ * \brief 弾丸クラス
+ * \detail 弾丸クラス。
+ */
 class Bullet : public GameObject
 {
     const  int direction_;
