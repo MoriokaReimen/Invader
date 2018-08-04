@@ -1,3 +1,10 @@
+/*!
+ * \file GameSystem.hpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief GameSystemクラスの宣言
+ */
 #pragma once
 #include<GameSystem.hpp>
 #include<GameStatus.hpp>

@@ -1,4 +1,12 @@
+/*!
+ * \file Bullet.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief Bulletクラスの実装
+ */
 #include<Bullet.hpp>
+
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
 

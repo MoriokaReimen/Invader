@@ -1,3 +1,10 @@
+/*!
+ * \file Bullet.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief GameStatusクラスの実装
+ */
 #include<GameStatus.hpp>
 
 GameStatus::GameStatus() : is_game_over_(false), is_player_win_(false), score_(0)

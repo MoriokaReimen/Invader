@@ -1,3 +1,10 @@
+/*!
+ * \file InputKeep.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief InputKeepクラスの宣言
+ */
 #include<InputKeep.hpp>
 
 InputKeep::InputKeep() : keep(10)

@@ -1,3 +1,10 @@
+/*!
+ * \file Window.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief Windowクラスの実装
+ */
 #include<Window.hpp>
 
 #include<ncurses.h>

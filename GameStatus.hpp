@@ -1,3 +1,10 @@
+/*!
+ * \file GameStatus.hpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief GameStatusクラスの宣言
+ */
 #pragma once
 
 class GameStatus

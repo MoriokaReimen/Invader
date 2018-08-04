@@ -1,9 +1,14 @@
+/*!
+ * \file main.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief main関数の実装
+ */
 #include <Window.hpp>
 #include <Screen.hpp>
 #include <UserInput.hpp>
 #include<GameSystem.hpp>
-
-#include<algorithm>
 
 #include<unistd.h>
 

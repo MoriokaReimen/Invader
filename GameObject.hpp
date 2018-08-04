@@ -1,3 +1,10 @@
+/*!
+ * \file GameObject.hpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief GameObjectクラスの宣言
+ */
 #pragma once
 #include<Screen.hpp>
 

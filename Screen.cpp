@@ -1,4 +1,12 @@
+/*!
+ * \file Screen.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief Screenクラスの実装
+ */
 #include<Screen.hpp>
+
 #include<Window.hpp>
 #include<GameSystem.hpp>
 

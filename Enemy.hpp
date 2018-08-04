@@ -1,3 +1,10 @@
+/*!
+ * \file Enemy.hpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief Enemyクラスの実装
+ */
 #pragma once
 #include<random>
 #include<GameObject.hpp>

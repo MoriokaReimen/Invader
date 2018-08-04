@@ -1,7 +1,13 @@
+/*!
+ * \file Player.hpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief Playerクラスの宣言
+ */
 #pragma once
 
 #include<GameObject.hpp>
-#include<GameSystem.hpp>
 #include<Screen.hpp>
 
 class Player : public GameObject

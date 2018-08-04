@@ -1,3 +1,10 @@
+/*!
+ * \file InputKeep.hpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief InputKeepクラスの宣言
+ */
 #pragma once
 #include<vector>
 

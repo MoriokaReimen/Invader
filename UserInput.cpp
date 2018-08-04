@@ -1,8 +1,16 @@
+/*!
+ * \file UserInput.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief UserInputクラスの実装
+ */
 #include<UserInput.hpp>
+
 #include<GameSystem.hpp>
+#include<InputKeep.hpp>
 
 #include<ncurses.h>
-#include<InputKeep.hpp>
 
 UserInput::UserInput(Window& window)
 {

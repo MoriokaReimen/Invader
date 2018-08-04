@@ -1,3 +1,10 @@
+/*!
+ * \file Bullet.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief Bulletクラスの実装
+ */
 #include<GameObject.hpp>
 
 GameObject::GameObject(const int& x, const int& y, const OBJECT_TYPE& type) :

@@ -1,3 +1,10 @@
+/*!
+ * \file UserInput.hpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief UserInputクラスの宣言
+ */
 #pragma once
 #include<Window.hpp>
 

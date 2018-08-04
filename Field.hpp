@@ -1,3 +1,10 @@
+/*!
+ * \file Field.hpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief Fieldクラスの宣言
+ */
 #pragma once
 
 #include<vector>
