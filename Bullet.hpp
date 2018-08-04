@@ -17,7 +17,7 @@
  */
 class Bullet : public GameObject
 {
-    const  int direction_;
+    const  int direction_; //!< 進行方向
 
 public:
     Bullet(const int& x, const int& y, const int& direction);

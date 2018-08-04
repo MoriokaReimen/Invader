@@ -9,6 +9,10 @@
 
 typedef struct _win_st WINDOW;
 
+/*!
+ * \class Window
+ * \brief cursesのwindowポインタ保持クラス
+ */
 class Window
 {
     WINDOW* win_;

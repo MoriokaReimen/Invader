@@ -10,6 +10,10 @@
 #include<GameObject.hpp>
 #include<Screen.hpp>
 
+/*!
+ * \class Player
+ * \brief プレイヤーのクラス
+ */
 class Player : public GameObject
 {
 public:

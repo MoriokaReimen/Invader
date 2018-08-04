@@ -11,11 +11,15 @@
 #include<InputKeep.hpp>
 #include<Field.hpp>
 
+/*!
+ * \class GameSystem
+ * \brief ゲームを管理するクラスへのポインタを保持する
+ */
 class GameSystem
 {
-    static InputKeep* input_keep;
-    static Field* field;
-    static GameStatus* status;
+    static InputKeep* input_keep; //!< 入力の一時置き場
+    static Field* field; //!< ゲームオブジェクトとフィールドの管理クラス
+    static GameStatus* status; //!< ゲームの状態クラス
 
     GameSystem();
     GameSystem(const GameSystem& other);

@@ -20,15 +20,19 @@ enum COLOR
     MESSAGE_COLOR,
 };
 
+/*!
+ * \class Screen
+ * \brief 画面表示クラス
+ */
 class Screen
 {
-    WINDOW* win_;
-    int max_x_;
-    int max_y_;
+    WINDOW* win_; //!< cursesのwindowポインタ
+    int max_x_; //!< 画面横幅サイズ
+    int max_y_; //!< 画面縦幅サイズ
 
-    Screen();
-    Screen(const Screen& other);
-    Screen& operator=(const Screen& other);
+    Screen() = delete;
+    Screen(const Screen& other) = delete;
+    Screen& operator=(const Screen& other) = delete;
 public:
     Screen(const Window& win);
     ~Screen();

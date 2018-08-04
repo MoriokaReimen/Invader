@@ -12,11 +12,15 @@ const char ERR(-1);
 
 typedef struct _win_st WINDOW;
 
+/*!
+ * \class UserInput
+ * \brief キー入力の保持クラス
+ */
 class UserInput
 {
-    WINDOW* win_;
-    UserInput();
-    UserInput& operator=(const UserInput& other);
+    WINDOW* win_; //!< cursesのwindowポインタ
+    UserInput() = delete;
+    UserInput& operator=(const UserInput& other) = delete;
 public:
     UserInput(Window& window);
     ~UserInput();

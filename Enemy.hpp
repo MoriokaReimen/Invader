@@ -6,16 +6,20 @@
  * \brief Enemyクラスの実装
  */
 #pragma once
-#include<random>
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
 #include<Screen.hpp>
 
+#include<random>
 
+/*!
+ * \class Enemy
+ * \brief 敵クラス
+ */
 class Enemy : public GameObject
 {
-    std::random_device generator_;
-    std::uniform_int_distribution<int> distribution_;
+    std::random_device generator_; //!< 乱数ジェネレータ
+    std::uniform_int_distribution<int> distribution_; //!< 一様分布
 
 public:
     Enemy(const int& x, const int& y);

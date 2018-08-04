@@ -7,14 +7,18 @@
  */
 #pragma once
 
+/*!
+ * \class GameStatus
+ * \brief ゲームの状態管理クラス
+ */
 class GameStatus
 {
-    GameStatus(const GameStatus& other);
-    GameStatus& operator=(const GameStatus& other);
+    GameStatus(const GameStatus& other) = delete;
+    GameStatus& operator=(const GameStatus& other) = delete;
 
-    bool is_game_over_;
-    bool is_player_win_;
-    int score_;
+    bool is_game_over_; //!< ゲームオーバフラグ
+    bool is_player_win_; //!< プレイヤーの勝利
+    int score_; //!< スコア
 public:
     GameStatus();
     ~GameStatus();

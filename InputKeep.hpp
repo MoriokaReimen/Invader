@@ -17,11 +17,15 @@ enum KEY_INPUT {
     SHOOT
 };
 
+/*!
+ * \class InputKeep
+ * \brief ユーザ入力の一時保持クラス
+ */
 class InputKeep
 {
-    std::vector<KEY_INPUT> keep;
-    InputKeep(const InputKeep& other);
-    InputKeep& operator=(const InputKeep& other);
+    std::vector<KEY_INPUT> keep; //!< キー入力を保持
+    InputKeep(const InputKeep& other) = delete;
+    InputKeep& operator=(const InputKeep& other) = delete;
 public:
     InputKeep();
     ~InputKeep();

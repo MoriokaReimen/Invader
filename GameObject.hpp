@@ -14,13 +14,17 @@ enum OBJECT_TYPE {
     BULLET
 };
 
+/*!
+ * \class GameObject
+ * \brief 画面上で動くオブジェクトの抽象基底クラス
+ */
 class GameObject
 {
 protected:
-    double x_;
-    double y_;
-    bool is_alive_;
-    OBJECT_TYPE type_;
+    double x_; //!< X座標
+    double y_; //!< Y座標
+    bool is_alive_; //!< 生死のフラグ
+    OBJECT_TYPE type_; //!< オブジェクトのタイプ;
 
 public:
     GameObject(const int& x, const int& y, const OBJECT_TYPE& type);

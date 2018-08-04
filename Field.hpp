@@ -6,20 +6,22 @@
  * \brief Fieldクラスの宣言
  */
 #pragma once
+#include<GameObject.hpp>
 
 #include<vector>
 #include<memory>
-#include<GameObject.hpp>
 
+/*!
+ * \class Field
+ * \brief ゲームフィールドの管理クラス
+ */
 class Field
 {
-
-    int x_;
-    int y_;
-    std::vector<std::shared_ptr<GameObject>> objects_;
-    std::vector<std::shared_ptr<GameObject>> new_objects_;
+    int x_; //!< フィールドの横幅
+    int y_; //!< フィールドの縦幅
+    std::vector<std::shared_ptr<GameObject>> objects_; //!< フィールド上のオブジェクト
+    std::vector<std::shared_ptr<GameObject>> new_objects_; //!< 追加されたオブジェクトの一時置き場
 public:
-
     Field();
 
     void update();
