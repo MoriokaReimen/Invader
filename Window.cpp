@@ -9,6 +9,9 @@
 
 #include<ncurses.h>
 
+/*!
+ * @brief Windowクラスのコンストラクタ
+ */
 Window::Window() : win_(NULL)
 {
     win_ = initscr();
@@ -18,6 +21,9 @@ Window::Window() : win_(NULL)
     return;
 }
 
+/*!
+ * @brief Windowクラスのデストラクタ
+ */
 Window::~Window()
 {
     endwin();
@@ -25,6 +31,10 @@ Window::~Window()
     return;
 }
 
+/*!
+ * @brief WINDOWのポインタを取得する
+ * @return WINDOWへのポインタ
+ */
 WINDOW* Window::get_raw() const
 {
     return win_;

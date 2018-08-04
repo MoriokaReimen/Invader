@@ -16,6 +16,9 @@ InputKeep* GameSystem::input_keep;
 Field* GameSystem::field;
 GameStatus* GameSystem::status;
 
+/*!
+ * @brief GameSystemを初期化する
+ */
 void GameSystem::init()
 {
     input_keep = new InputKeep();
@@ -25,16 +28,31 @@ void GameSystem::init()
     return;
 }
 
+/*!
+ * @brief InputKeepクラスへのポインタを返す
+ * @return InputKeepへのポインタ
+ * @warning GameSystem::initが先に呼ばれている必要があります
+ */
 InputKeep* GameSystem::getInputKeep()
 {
     return input_keep;
 }
 
+/*!
+ * @brief Fieldクラスへのポインタを返す
+ * @return Fieldへのポインタ
+ * @warning GameSystem::initが先に呼ばれている必要があります
+ */
 Field* GameSystem::getField()
 {
     return field;
 }
 
+/*!
+ * @brief cleanup
+ * @return ポインタを解放する
+ * @warning GameSystem::initが先に呼ばれている必要があります
+ */
 void GameSystem::cleanup()
 {
     delete input_keep;
@@ -42,6 +60,11 @@ void GameSystem::cleanup()
     delete status;
 }
 
+/*!
+ * @brief GameStatusクラスへのポインタを返す
+ * @return GameStatusへのポインタ
+ * @warning GameSystem::initが先に呼ばれている必要があります
+ */
 GameStatus* GameSystem::getStatus()
 {
     return status;
