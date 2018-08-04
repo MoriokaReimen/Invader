@@ -1,9 +1,9 @@
 /*!
- * \file Bullet.cpp
+ * \file Player.cpp
  *
  * \author MoriokaReimen
  * \date 2018.08.04
- * \brief Bulletクラスの実装
+ * \brief Playerクラスの実装
  */
 #include<Player.hpp>
 

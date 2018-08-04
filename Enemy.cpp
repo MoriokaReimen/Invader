@@ -1,4 +1,12 @@
+/*!
+ * \file Enemy.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief Enemyクラスの実装
+ */
 #include<Enemy.hpp>
+
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
 #include<Screen.hpp>
@@ -7,20 +15,30 @@
 #include<memory>
 #include<random>
 
+/*!
+ * @brief Enemyクラスのコンストラクタ
+ * @param[in] x 位置のX座標
+ * @param[in] y 位置のY座標
+ */
 Enemy::Enemy(const int& x, const int& y) :
     GameObject(x, y, ENEMY), generator_(), distribution_(0, 100)
 {
 }
 
+/*!
+ * @brief Enemy状態の更新
+ */
 void Enemy::update()
 {
     const Field* field = GameSystem::getField();
-    int next_x(x_), next_y(y_);
 
+    /*!フィールドの端に到達したらプレイヤーの負け*/
     GameStatus* status = GameSystem::getStatus();
-    if(this->y_ > (field->get_y() - 5))
+    if(this->y_ > (field->get_y() - 3))
         status->setGameOver();
 
+    /*!ランダムに動作を設定*/
+    int next_x(x_), next_y(y_);
     const int next_action = distribution_(generator_) % 200;
     switch(next_action) {
     case 1:
@@ -38,6 +56,7 @@ void Enemy::update()
         break;
     }
 
+    /*!フィールド内に動きを制限*/
     if(field->is_on_field(next_x, next_y) && !field->checkPosition(next_x, next_y)) {
         x_ = next_x;
         y_ = next_y;
@@ -46,15 +65,27 @@ void Enemy::update()
     return;
 }
 
+/*!
+ * @brief Enemyクラスのデストラクタ
+ */
 Enemy::~Enemy()
 {}
 
+/*!
+ * @brief Enemyを描画する
+ * @param[in,out] screen 描画するスクリーンのクラス
+ */
 void Enemy::draw(Screen& screen)
 {
     screen.print("M", this->x_, this->y_, ENEMY_COLOR);
     return;
 }
 
+/*!
+ * @brief 弾を発射する
+ * @param[in] x 弾の生成位置
+ * @param[in] y 弾の生成位置
+ */
 void Enemy::shoot(const  int&x, const int& y)
 {
     Field* field = GameSystem::getField();
@@ -63,10 +94,15 @@ void Enemy::shoot(const  int&x, const int& y)
     return;
 }
 
+/*!
+ * @brief 死亡フラグを設定する
+ */
 void Enemy::kill()
 {
-    GameStatus* status = GameSystem::getStatus();
     GameObject::kill();
+
+    /*!スコアを加算する*/
+    GameStatus* status = GameSystem::getStatus();
     status->addScore(30);
 
     return;
