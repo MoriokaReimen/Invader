@@ -32,4 +32,4 @@ astyle:
 	astyle *.hpp *.cpp
 
 doxygen:
-	doxygen .
+	doxygen doxygen.config .
