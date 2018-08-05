@@ -172,10 +172,9 @@ bool Screen::print(const char& ch, const int& x, const int& y, const COLOR& colo
  */
 void Screen::printBorder(const int& x_size, const int& y_size)
 {
-    Field* field = GameSystem::getField();
+    GameField* field = GameSystem::getField();
 
-    max_x_ = field->get_x();
-    max_y_ = field->get_y();
+    field->get_size(max_x_, max_y_);
     /*四隅を描画*/
     this->print("+", 0, 0);
     this->print("+", 0, max_y_ - 1);
@@ -215,8 +214,9 @@ void Screen::getSize(int& x, int& y)
  */
 void Screen::drawObjects()
 {
-    Field* field = GameSystem::getField();
-    field->draw(*this);
+    GameField* field = GameSystem::getField();
+    for(auto it = field->begin(); it != field->end(); it++)
+        (*it)->draw(*this);
 
     return;
 }

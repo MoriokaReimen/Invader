@@ -5,10 +5,11 @@
  * \date 2018.08.04
  * \brief main関数の実装
  */
-#include <Window.hpp>
-#include <Screen.hpp>
-#include <UserInput.hpp>
+#include<Window.hpp>
+#include<Screen.hpp>
+#include<UserInput.hpp>
 #include<GameSystem.hpp>
+#include<Logic.hpp>
 
 #include<unistd.h>
 
@@ -18,17 +19,18 @@ const int MAX_Y(50);
 
 int main(int argc, char *argv[])
 {
+    GameSystem::init();
     Window win;
     char ch = 'p';
     Screen screen(win);
     UserInput input(win);
-    GameSystem::init();
-    Field* field = GameSystem::getField();
+    Logic logic;
+
     InputKeep* keep = GameSystem::getInputKeep();
 
     while (1) {
         ch = input.store();
-        field->update();
+        logic.update();
 
         screen.clear();
         screen.printBorder(100, 50);

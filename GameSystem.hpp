@@ -8,7 +8,7 @@
 #pragma once
 #include<GameStatus.hpp>
 #include<InputKeep.hpp>
-#include<Field.hpp>
+#include<GameField.hpp>
 
 /*!
  * \class GameSystem
@@ -17,7 +17,7 @@
 class GameSystem
 {
     static InputKeep* input_keep; //!< 入力の一時置き場
-    static Field* field; //!< ゲームオブジェクトとフィールドの管理クラス
+    static GameField* field; //!< ゲームオブジェクトとフィールドの管理クラス
     static GameStatus* status; //!< ゲームの状態クラス
 
     GameSystem();
@@ -28,7 +28,7 @@ class GameSystem
 public:
     static void init();
     static InputKeep* getInputKeep();
-    static Field* getField();
+    static GameField* getField();
     static GameStatus* getStatus();
     static void cleanup();
 };

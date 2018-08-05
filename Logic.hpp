@@ -6,7 +6,7 @@
  * \brief Logicクラスの宣言
  */
 #pragma once
-#include<GameObject.hpp>
+#include<GameField.hpp>
 
 #include<vector>
 #include<memory>
@@ -17,24 +17,15 @@
  */
 class Logic
 {
-    int x_; //!< フィールドの横幅
-    int y_; //!< フィールドの縦幅
-    std::vector<std::shared_ptr<GameObject>> objects_; //!< フィールド上のオブジェクト
-    std::vector<std::shared_ptr<GameObject>> new_objects_; //!< 追加されたオブジェクトの一時置き場
+    GameField* field_;
+
+    Logic(const Logic& other) = delete;
+    Logic& operator=(const Logic& other) = delete;
+
+    int countEnemy() const;
 public:
     Logic();
-
+    ~Logic();
     void update();
-    void draw();
-    void draw(Screen& screen);
-    void reap();
-
-    int get_x() const;
-    int get_y() const;
-    bool is_on_field(const int& x, const int& y) const;
-    void addObject(std::shared_ptr<GameObject>&& object);
-    std::shared_ptr<GameObject> getObject(const int& x, const int& y);
-    bool checkPosition(const int& x, const int& y) const;
-    int countEnemy() const;
 
 };

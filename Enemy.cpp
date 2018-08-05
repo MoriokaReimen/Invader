@@ -30,11 +30,13 @@ Enemy::Enemy(const int& x, const int& y) :
  */
 void Enemy::update()
 {
-    const Field* field = GameSystem::getField();
+    GameField* field = GameSystem::getField();
 
     /*!フィールドの端に到達したらプレイヤーの負け*/
     GameStatus* status = GameSystem::getStatus();
-    if(this->y_ > (field->get_y() - 3))
+    int _, field_y;
+    field->get_size(_, field_y);
+    if(this->y_ > (field_y - 3))
         status->setGameOver();
 
     /*!ランダムに動作を設定*/
@@ -57,7 +59,7 @@ void Enemy::update()
     }
 
     /*!フィールド内に動きを制限*/
-    if(field->is_on_field(next_x, next_y) && !field->checkPosition(next_x, next_y)) {
+    if(field->is_on_field(next_x, next_y) && !(field->getObject(next_x, next_y))) {
         x_ = next_x;
         y_ = next_y;
     }
@@ -88,7 +90,7 @@ void Enemy::draw(Screen& screen)
  */
 void Enemy::shoot(const  int&x, const int& y)
 {
-    Field* field = GameSystem::getField();
+    GameField* field = GameSystem::getField();
     field->addObject(std::shared_ptr<GameObject>(new Bullet(x, y+1, 1)));
 
     return;

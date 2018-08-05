@@ -2,7 +2,7 @@ CFLAGS = -g -Wall -std=c++11 -I.
 LDFLAGS = -lncurses
 
 SRC = \
-	Field.cpp \
+	GameField.cpp \
 	InputKeep.cpp \
 	Player.cpp \
 	Screen.cpp \

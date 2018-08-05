@@ -53,7 +53,7 @@ void Player::update()
     }
 
     /*!移動範囲をフィールド上に制限*/
-    Field* field = GameSystem::getField();
+    GameField* field = GameSystem::getField();
     if(field->is_on_field(next_x, next_y)) {
         x_ = next_x;
         y_ = next_y;
@@ -85,7 +85,7 @@ void Player::draw(Screen& screen)
  */
 void Player::shoot(const  int&x, const int& y)
 {
-    Field* field = GameSystem::getField();
+    GameField* field = GameSystem::getField();
     field->addObject(std::shared_ptr<GameObject>(new Bullet(x, y - 1, -1)));
 
     return;

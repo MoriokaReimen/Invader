@@ -9,11 +9,11 @@
 
 #include<InputKeep.hpp>
 #include<GameStatus.hpp>
-#include<Field.hpp>
+#include<GameField.hpp>
 #include<GameStatus.hpp>
 
 InputKeep* GameSystem::input_keep;
-Field* GameSystem::field;
+GameField* GameSystem::field;
 GameStatus* GameSystem::status;
 
 /*!
@@ -22,7 +22,7 @@ GameStatus* GameSystem::status;
 void GameSystem::init()
 {
     input_keep = new InputKeep();
-    field = new Field();
+    field = new GameField();
     status = new GameStatus();
 
     return;
@@ -43,7 +43,7 @@ InputKeep* GameSystem::getInputKeep()
  * @return Fieldへのポインタ
  * @warning GameSystem::initが先に呼ばれている必要があります
  */
-Field* GameSystem::getField()
+GameField* GameSystem::getField()
 {
     return field;
 }

@@ -29,7 +29,7 @@ void Bullet::update()
     this->y_ += direction_ * 0.1;
 
     /*!弾の命中処理*/
-    Field* field = GameSystem::getField();
+    GameField* field = GameSystem::getField();
     auto hit_object = field->getObject(this->x_, this->y_);
     if(hit_object != nullptr && hit_object.get() != this) {
         hit_object->kill();
