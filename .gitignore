@@ -1,3 +1,6 @@
 # Output files
 *.o
 main
+*.orig
+html/*
+latex/*

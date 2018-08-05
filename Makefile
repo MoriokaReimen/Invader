@@ -1,25 +1,38 @@
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -std=c++11 -I.
 LDFLAGS = -lncurses
 
-.PHONY: clean
+SRC = \
+	GameField.cpp \
+	InputKeep.cpp \
+	Player.cpp \
+	Screen.cpp \
+	GameObject.cpp \
+	UserInput.cpp \
+	Window.cpp \
+	GameSystem.cpp \
+	Bullet.cpp \
+	Enemy.cpp \
+	GameStatus.cpp \
+	Logic.cpp \
+	main.cpp
+OBJ = $(SRC:.cpp=.o)
 
-main: main.o Screen.o Window.o UserInput.o GameObject.o
-	g++ $^ -o main $(LDFLAGS)
+main: $(OBJ)
+	g++ $^ -o $@ $(LDFLAGS)
 
-main.o: main.cpp
-	g++ -c -I. $(CFLAGS) main.cpp -o main.o $(LDFLAGS)
+%.o: %.cpp
+	g++ $(CFLAGS) -c $< -o $@
 
-Screen.o: Screen.cpp
-	g++ -c -I. $(CFLAGS) Screen.cpp -o Screen.o $(LDFLAGS)
-
-Window.o: Window.cpp
-	g++ -c -I. $(CFLAGS) Window.cpp -o Window.o $(LDFLAGS)
-
-UserInput.o: UserInput.cpp
-	g++ -c -I. $(CFLAGS) UserInput.cpp -o UserInput.o $(LDFLAGS)
+.PHONY: clean astyle
 
 GameObject.o: GameObject.cpp
 	g++ -c -I. $(CFLAGS) GameObject.cpp -o GameObject.o $(LDFLAGS)
 
 clean:
-	rm -rf main *.o
+	rm -rf main *.o *.orig
+
+astyle:
+	astyle *.hpp *.cpp
+
+doxygen:
+	doxygen doxygen.config .

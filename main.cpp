@@ -1,8 +1,15 @@
-#include <Window.hpp>
-#include <Screen.hpp>
-#include <UserInput.hpp>
-
-#include<algorithm>
+/*!
+ * \file main.cpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief main関数の実装
+ */
+#include<Window.hpp>
+#include<Screen.hpp>
+#include<UserInput.hpp>
+#include<GameSystem.hpp>
+#include<Logic.hpp>
 
 #include<unistd.h>
 
@@ -10,47 +17,28 @@ const int DELAY(15000);
 const int MAX_X(70);
 const int MAX_Y(50);
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
+    GameSystem::init();
     Window win;
-  int x = 1,
-      y = 1;
-  int max_x, max_y;
-  char ch = 'p';
-  Screen screen(win);
-  UserInput input(win);
+    Screen screen(win);
+    UserInput input(win);
+    Logic logic;
 
-  while (1) {
-    ch = input.get();
-    screen.getSize(max_x, max_y);
-    switch(ch)
-    {
-        case 'k':
-            y--;
-            break;
-        case 'h':
-            x--;
-            break;
-        case 'j':
-            y++;
-            break;
-        case 'l':
-            x++;
-            break;
-        default:
-            break;
+    GameStatus* status = GameSystem::getStatus();
+
+    while (1) {
+        input.store();
+        logic.update();
+
+        screen.update();
+
+        usleep(DELAY);
+
+        if(status->isGameEnd()) break;
     }
-    y = std::max(1, std::min(y, MAX_Y));
-    x = std::max(1, std::min(x, MAX_X));
-    screen.clear();
-    screen.print('@', x, y);
-    screen.printBorder(100, 50);
-    screen.update();
 
-    usleep(DELAY);
+    GameSystem::cleanup();
 
-    if(ch == 'q') break;
-
-  }
-
-  return 0;
+    return 0;
 }

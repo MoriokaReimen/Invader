@@ -1,30 +1,39 @@
+/*!
+ * \file GameObject.hpp
+ *
+ * \author MoriokaReimen
+ * \date 2018.08.04
+ * \brief GameObjectクラスの宣言
+ */
 #pragma once
 #include<Screen.hpp>
 
-enum OBJECT_TYPE
-{
-    FIELD,
+enum OBJECT_TYPE {
     PLAYER,
-
-    OBJECT_TYPE_COUNT
+    ENEMY,
+    BULLET
 };
 
+/*!
+ * \class GameObject
+ * \brief 画面上で動くオブジェクトの抽象基底クラス
+ */
 class GameObject
 {
-    int x_, y_;
-    bool is_alive_;
-    OBJECT_TYPE type_;
-    GameObject();
+protected:
+    double x_; //!< X座標
+    double y_; //!< Y座標
+    bool is_alive_; //!< 生死のフラグ
+    OBJECT_TYPE type_; //!< オブジェクトのタイプ;
 
 public:
-    GameObject(const int& x, const int& y);
-    GameObject(const GameObject& other);
-    virtual ~GameObject();
+    GameObject(const int& x, const int& y, const OBJECT_TYPE& type);
+    virtual ~GameObject() = 0;
     virtual void update() = 0;
-    virtual void draw(Screen& screen);
+    virtual void draw(Screen& screen) = 0;
+    virtual void kill();
 
-    /* 他のゲームオブジェクトから呼び出されるメソッド */
-    OBJECT_TYPE getType();
     void getPosition(int& x, int& y);
     bool isAlive();
+    OBJECT_TYPE getType();
 };
