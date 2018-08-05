@@ -79,8 +79,8 @@ int Logic::countEnemy() const
     OBJECT_TYPE type;
 
     for(auto it = this->field_->begin();
-        it != this->field_->end();
-        it++) {
+            it != this->field_->end();
+            it++) {
         type = (*it)->getType();
         if(type == ENEMY) count++;
     }
