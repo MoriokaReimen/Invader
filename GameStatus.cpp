@@ -10,7 +10,7 @@
 /*!
  * @brief GameStatusのコンストラクタ
  */
-GameStatus::GameStatus() : is_game_over_(false), is_player_win_(false), score_(0)
+GameStatus::GameStatus() : is_game_over_(false), is_player_win_(false), is_game_end_(false), score_(0)
 {
     return;
 }
@@ -53,6 +53,15 @@ void GameStatus::setGameOver()
 }
 
 /*!
+ * @brief ゲーム終了フラグをセットする
+ */
+void GameStatus::setGameEnd()
+{
+    is_game_end_ = true;
+    return;
+}
+
+/*!
  * @brief プレイヤー勝利フラグをセットする
  */
 void GameStatus::setPlayerWin()
@@ -79,4 +88,14 @@ void GameStatus::addScore(const int& score)
 int GameStatus::getScore()
 {
     return this->score_;
+}
+
+/*!
+ * @brief ゲーム終了フラグを取得する
+ * @retval true ゲーム終了
+ * @retval false ゲーム継続
+ */
+bool GameStatus::isGameEnd() const
+{
+    return this->is_game_end_;
 }

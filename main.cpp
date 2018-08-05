@@ -21,27 +21,21 @@ int main(int argc, char *argv[])
 {
     GameSystem::init();
     Window win;
-    char ch = 'p';
     Screen screen(win);
     UserInput input(win);
     Logic logic;
 
-    InputKeep* keep = GameSystem::getInputKeep();
+    GameStatus* status = GameSystem::getStatus();
 
     while (1) {
-        ch = input.store();
+        input.store();
         logic.update();
 
-        screen.clear();
-        screen.printBorder(100, 50);
-        screen.drawObjects();
         screen.update();
-        keep->clear();
 
         usleep(DELAY);
 
-        if(ch == 'q') break;
-
+        if(status->isGameEnd()) break;
     }
 
     GameSystem::cleanup();

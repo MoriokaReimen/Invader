@@ -61,6 +61,10 @@ void Screen::clear()
  * @brief 画面表示を更新する
  */
 void Screen::update() {
+    this->clear(); //!< 画面表示をクリア
+    this->printBorder(); //!< 枠を表示
+    this->drawObjects(); //!< ゲームオブジェクトを描画
+
     GameStatus* status = GameSystem::getStatus();
     if(status->isGameOver())
         this->printGameOver();
@@ -170,7 +174,7 @@ bool Screen::print(const char& ch, const int& x, const int& y, const COLOR& colo
  * @param[in] x_size 横幅
  * @param[in] y_size 縦幅
  */
-void Screen::printBorder(const int& x_size, const int& y_size)
+void Screen::printBorder()
 {
     GameField* field = GameSystem::getField();
 

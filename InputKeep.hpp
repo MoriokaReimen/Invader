@@ -14,7 +14,8 @@ enum KEY_INPUT {
     DOWN,
     RIGHT,
     LEFT,
-    SHOOT
+    SHOOT,
+    GAME_END
 };
 
 /*!

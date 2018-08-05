@@ -44,7 +44,6 @@ public:
     bool print(const char* const str, const int& x, const int& y, const COLOR& color);
     bool print(const std::string& str, const int& x, const int& y, const COLOR& color);
     bool print(const char& ch, const int& x, const int& y, const COLOR& color);
-    void printBorder(const int& x_size, const int& y_size);
     void printBorder();
     void getSize(int& x, int& y);
     void drawObjects();

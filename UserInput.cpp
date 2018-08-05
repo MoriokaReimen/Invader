@@ -44,6 +44,9 @@ char UserInput::store()
     case 's':
         keep->store(SHOOT);
         break;
+    case 'q':
+        keep->store(GAME_END);
+        break;
     }
 
     return ch;

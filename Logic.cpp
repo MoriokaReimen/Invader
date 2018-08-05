@@ -39,8 +39,15 @@ Logic::~Logic()
  */
 void Logic::update()
 {
-    /*!敵がいなくなればプレイヤーの勝利フラグを設定*/
     GameStatus* status = GameSystem::getStatus();
+
+    /*!qが入力されたゲーム終了*/
+    InputKeep* input = GameSystem::getInputKeep();
+    const KEY_INPUT key = input->get();
+    if(key == GAME_END)
+        status->setGameEnd();
+
+    /*!敵がいなくなればプレイヤーの勝利フラグを設定*/
     if(0 == this->countEnemy())
     {
         status -> setPlayerWin();
@@ -55,6 +62,9 @@ void Logic::update()
 
     /*!死んだオブジェクトを除去*/
     field_->update_objects();
+
+    /*!キー入力のバッファをクリア*/
+    input->clear();
 
     return;
 }
