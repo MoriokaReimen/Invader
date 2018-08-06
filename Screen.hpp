@@ -8,6 +8,7 @@
 #pragma once
 
 #include<string>
+#include<eigen3/Eigen/Eigen>
 
 typedef struct _win_st WINDOW;
 class Window;
@@ -42,8 +43,10 @@ public:
     bool print(const std::string& str, const int& x, const int& y);
     bool print(const char& ch, const int& x, const int& y);
     bool print(const char* const str, const int& x, const int& y, const COLOR& color);
-    bool print(const std::string& str, const int& x, const int& y, const COLOR& color);
+    bool print(const std::string& str, const Eigen::Vector2f& pos, const COLOR& color);
     bool print(const char& ch, const int& x, const int& y, const COLOR& color);
+    bool print(const std::string& str, const int& x, const int& y, const COLOR& color);
+    bool print(const std::string& str, const Eigen::Vector2f& pos);
     void printBorder();
     void getSize(int& x, int& y);
     void drawObjects();
