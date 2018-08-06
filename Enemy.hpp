@@ -21,11 +21,10 @@ class Enemy : public GameObject
     std::uniform_int_distribution<int> distribution_; //!< 一様分布
 
 public:
-    Enemy(const int& x, const int& y);
-    void update();
-    ~Enemy();
-    void draw(Screen& screen);
-    void shoot(const int&x, const int& y);
-    void kill();
-
+    Enemy(const Eigen::Vector2f& pos);
+    void update() override;
+    ~Enemy() override;
+    void draw(Screen& screen) override;
+    void shoot(const Eigen::Vector2f& pos);
+    void on_collide(std::shared_ptr<GameObject> other) override;
 };

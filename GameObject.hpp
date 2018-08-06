@@ -7,6 +7,9 @@
  */
 #pragma once
 #include<Screen.hpp>
+#include<eigen3/Eigen/Eigen>
+
+#include<memory>
 
 enum OBJECT_TYPE {
     PLAYER,
@@ -21,19 +24,19 @@ enum OBJECT_TYPE {
 class GameObject
 {
 protected:
-    double x_; //!< X座標
-    double y_; //!< Y座標
-    bool is_alive_; //!< 生死のフラグ
+    int hp_; //!< HP
+    Eigen::Vector2f pos_; //!< 位置
+    Eigen::Vector2f vel_; //!< 速度
     OBJECT_TYPE type_; //!< オブジェクトのタイプ;
 
 public:
-    GameObject(const int& x, const int& y, const OBJECT_TYPE& type);
+    GameObject(const int& hp, const Eigen::Vector2f& pos, const Eigen::Vector2f& vel, const OBJECT_TYPE& type);
     virtual ~GameObject() = 0;
     virtual void update() = 0;
     virtual void draw(Screen& screen) = 0;
-    virtual void kill();
+    virtual void on_collide(std::shared_ptr<GameObject> other) = 0;
 
-    void getPosition(int& x, int& y);
+    Eigen::Vector2f getPosition();
     bool isAlive();
     OBJECT_TYPE getType();
 };

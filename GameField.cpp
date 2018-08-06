@@ -13,6 +13,7 @@
 #include<algorithm>
 #include<memory>
 #include<vector>
+#include<eigen3/Eigen/Eigen>
 
 const int FIELD_X(80); //!< フィールド横幅
 const int FIELD_Y(40); //!< フィールド縦幅
@@ -24,11 +25,11 @@ const int FIELD_Y(40); //!< フィールド縦幅
  */
 GameField::GameField() : x_(FIELD_X), y_(FIELD_Y)
 {
-    this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(40, 38)));
-
-    for(int i = 15; i < 75; ++i)
-        for(int j = 1; j < 6; ++j)
-            this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(i, j)));
+    Eigen::Vector2f pos(40, 38);
+    this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(pos)));
+    for(int i = 2; i < 3; ++i)
+        for(int j = 35; j < 45; ++j)
+            this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(Eigen::Vector2f(j, i))));
 
     return;
 }
@@ -48,15 +49,16 @@ void GameField::get_size(int& x, int& y) const
 
 /*!
  * @brief 指定された座標がフィールド上かどうかを判定する
+ * @param[in] pos 位置
  * @retval true フィールド上
  * @retval false フィールド外
  */
-bool GameField::is_on_field(const int& x, const int& y) const
+bool GameField::is_on_field(const Eigen::Vector2f& pos) const
 {
-    if(x >= this->x_ - 1) return false;
-    if(x < 1) return false;
-    if(y >= this->y_ - 1) return false;
-    if(y < 1) return false;
+    if(pos[0] >= this->x_ - 1) return false;
+    if(pos[0] < 1) return false;
+    if(pos[1] >= this->y_ - 1) return false;
+    if(pos[1] < 1) return false;
     return true;
 }
 
@@ -97,21 +99,17 @@ void GameField::addObject(std::shared_ptr<GameObject>&& object)
 
 /*!
  * @brief 指定された位置のオブジェクトのポインタを取得する
- * @param[in] x 位置のX座標
- * @param[in] y 位置のY座標
+ * @param center 位置のX座標
  * @return オブジェクトへのポインタ
  * @warning オブジェクトがなければNULLポインタを返す
  */
-std::shared_ptr<GameObject> GameField::getObject(const int& x, const int& y)
+std::shared_ptr<GameObject> GameField::getObject(const Eigen::Vector2f& center)
 {
-    int pos_x(0);
-    int pos_y(0);
-
-    for(auto it = this->objects_.begin();
-            it != this->objects_.end();
-            it++) {
-        (*it)->getPosition(pos_x, pos_y);
-        if(pos_x == x && pos_y == y)
+    for(auto it = this->objects_.begin(); it != this->objects_.end(); it++) {
+        Eigen::Vector2f pos = (*it)->getPosition();
+        Eigen::Vector2f diff = center - pos;
+        double distance = diff.cwiseAbs2().sum();
+        if(distance < 1.0)
             return *it;
     }
 

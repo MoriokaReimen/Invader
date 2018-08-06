@@ -12,10 +12,10 @@
 
 #include<ncurses.h>
 #include<string>
+#include<eigen3/Eigen/Eigen>
 
 const int SCREEN_X(250);
 const int SCREEN_Y(150);
-
 
 /*!
  * @brief Screenクラスのコンストラクタ
@@ -134,6 +134,32 @@ bool Screen::print(const std::string& str, const int& x, const int& y)
 bool Screen::print(const std::string& str, const int& x, const int& y, const COLOR& color)
 {
     bool err = this->print(str.c_str(), x, y, color);
+    return err;
+}
+
+/*!
+ * @brief 画面に文字列を表示する
+ * @param[in] str 表示する文字列
+ * @param[in] pos 表示位置
+ * @retval true 成功
+ * @retval false 失敗
+ */
+bool Screen::print(const std::string& str, const Eigen::Vector2f& pos)
+{
+    return this->print(str.c_str(), pos[0], pos[1]);
+}
+
+/*!
+ * @brief 画面に文字列を表示する
+ * @param[in] str 表示する文字列
+ * @param[in] pos 表示位置
+ * @param[in] color 色
+ * @retval true 成功
+ * @retval false 失敗
+ */
+bool Screen::print(const std::string& str, const Eigen::Vector2f& pos, const COLOR& color)
+{
+    bool err = this->print(str.c_str(), pos[0], pos[1], color);
     return err;
 }
 

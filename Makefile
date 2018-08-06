@@ -5,13 +5,13 @@ SRC = \
 	GameField.cpp \
 	InputKeep.cpp \
 	Player.cpp \
+	Enemy.cpp \
 	Screen.cpp \
 	GameObject.cpp \
 	UserInput.cpp \
 	Window.cpp \
 	GameSystem.cpp \
 	Bullet.cpp \
-	Enemy.cpp \
 	GameStatus.cpp \
 	Logic.cpp \
 	main.cpp
