@@ -25,7 +25,7 @@ const int FIELD_Y(40); //!< フィールド縦幅
 GameField::GameField() : x_(FIELD_X), y_(FIELD_Y)
 {
     Eigen::Vector2f pos(40, 38);
-    // this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(pos)));
+    this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(pos)));
 
     return;
 }
