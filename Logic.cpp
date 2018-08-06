@@ -53,6 +53,8 @@ void Logic::update()
         status -> setPlayerWin();
     }
 
+    resolveCollision();
+
     /*!フィールド上のオブジェクトの更新*/
     for(auto it = this->field_->begin();
             it != this->field_->end();
@@ -60,7 +62,6 @@ void Logic::update()
         (*it)->update();
     }
 
-    resolveCollision();
 
     /*!死んだオブジェクトを除去*/
     field_->update_objects();
@@ -119,7 +120,7 @@ bool Logic::isCollide(std::shared_ptr<GameObject> lhs, std::shared_ptr<GameObjec
     Eigen::Vector2f lpos = lhs->getPosition();
     Eigen::Vector2f rpos = rhs->getPosition();
     Eigen::Vector2f diff = lpos - rpos;
-    double distance = diff.cwiseAbs2().sum();
-    if(distance < 0.9) return true;
+    double distance = diff.cwiseAbs().sum();
+    if(distance < 1.0) return true;
     return false;
 }

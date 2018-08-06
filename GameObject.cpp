@@ -15,7 +15,7 @@
  * @param[in] type オブジェクトのタイプ
  */
 GameObject::GameObject(const int& hp, const Eigen::Vector2f& pos, const Eigen::Vector2f& vel, const OBJECT_TYPE& type)
-: hp_(hp), pos_(pos), vel_(vel), type_(type)
+    : hp_(hp), pos_(pos), vel_(vel), type_(type)
 {
     return;
 }
@@ -41,7 +41,7 @@ Eigen::Vector2f GameObject::getPosition()
  */
 bool GameObject::isAlive()
 {
-    return hp_ > 0;
+    return (this->hp_ > 0);
 }
 
 /*!

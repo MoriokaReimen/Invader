@@ -14,14 +14,17 @@
 
 #include<memory>
 #include<random>
+#include<eigen3/Eigen/Eigen>
+
+const int ENEMY_HP(30);
 
 /*!
  * @brief Enemyクラスのコンストラクタ
  * @param[in] x 位置のX座標
  * @param[in] y 位置のY座標
  */
-Enemy::Enemy(const int& x, const int& y) :
-    GameObject(x, y, ENEMY), generator_(), distribution_(0, 100)
+Enemy::Enemy(const Eigen::Vector2f& pos)
+    : GameObject(ENEMY_HP, pos, Eigen::Vector2f::Zero(), ENEMY), generator_(), distribution_(0, 100)
 {
 }
 
@@ -36,32 +39,31 @@ void Enemy::update()
     GameStatus* status = GameSystem::getStatus();
     int _, field_y;
     field->get_size(_, field_y);
-    if(this->y_ > (field_y - 3))
+    if(this->pos_[1] > (field_y - 3))
         status->setGameOver();
 
     /*!ランダムに動作を設定*/
-    int next_x(x_), next_y(y_);
+    Eigen::Vector2f next_pos(pos_);
     const int next_action = distribution_(generator_) % 200;
     switch(next_action) {
     case 1:
-        next_x++;
+        next_pos[0]+=1.0;
         break;
     case 2:
-        next_x--;
+        next_pos[0]-=1.0;
         break;
     case 3:
-        next_y++;
+        next_pos[1]+=1.0;
         break;
     case 4:
-        shoot(x_, y_ + 1);
+        shoot(pos_);
     default:
         break;
     }
 
     /*!フィールド内に動きを制限*/
-    if(field->is_on_field(next_x, next_y) && !(field->getObject(next_x, next_y))) {
-        x_ = next_x;
-        y_ = next_y;
+    if(field->is_on_field(next_pos) && !(field->getObject(next_pos))) {
+        pos_ = next_pos;
     }
 
     return;
@@ -71,7 +73,10 @@ void Enemy::update()
  * @brief Enemyクラスのデストラクタ
  */
 Enemy::~Enemy()
-{}
+{
+    auto status = GameSystem::getStatus();
+    status->addScore(10);
+}
 
 /*!
  * @brief Enemyを描画する
@@ -79,7 +84,7 @@ Enemy::~Enemy()
  */
 void Enemy::draw(Screen& screen)
 {
-    screen.print("M", this->x_, this->y_, ENEMY_COLOR);
+    screen.print("M", pos_, ENEMY_COLOR);
     return;
 }
 
@@ -88,25 +93,25 @@ void Enemy::draw(Screen& screen)
  * @param[in] x 弾の生成位置
  * @param[in] y 弾の生成位置
  */
-void Enemy::shoot(const  int&x, const int& y)
+void Enemy::shoot(const Eigen::Vector2f& pos)
 {
+    Eigen::Vector2f bullet_pos(pos);
+    Eigen::Vector2f bullet_vel(0.0, 0.2);
+    bullet_pos[1] += 1.0;
     GameField* field = GameSystem::getField();
-    field->addObject(std::shared_ptr<GameObject>(new Bullet(x, y+1, 1)));
+    field->addObject(std::shared_ptr<GameObject>(new Bullet(bullet_pos, bullet_vel)));
 
     return;
 }
 
-/*!
- * @brief 死亡フラグを設定する
- */
-void Enemy::kill()
+void Enemy::on_collide(std::shared_ptr<GameObject> other)
 {
-    GameObject::kill();
-
-    /*!スコアを加算する*/
-    GameStatus* status = GameSystem::getStatus();
-    status->addScore(30);
+    if(!other) return;
+    if(other.get() == this) return;
+    if(other->getType() == BULLET)
+    {
+        this->hp_ -= 10;
+    }
 
     return;
-
 }

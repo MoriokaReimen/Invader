@@ -28,14 +28,8 @@ void Bullet::update()
     /*!位置を更新*/
     pos_ += vel_;
 
-    /*!弾の命中処理*/
-    GameField* field = GameSystem::getField();
-    auto hit_object = field->getObject(pos_);
-    if(hit_object != nullptr && hit_object.get() != this) {
-        this->on_collide(hit_object);
-    }
-
     /*!フィールド外に出たら消滅する*/
+    GameField* field = GameSystem::getField();
     if(!field->is_on_field(pos_)) {
         this->hp_ = 0;
     }

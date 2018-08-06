@@ -7,6 +7,7 @@
  */
 #include<GameField.hpp>
 #include<Player.hpp>
+#include<Enemy.hpp>
 #include<GameObject.hpp>
 
 #include<algorithm>
@@ -26,6 +27,9 @@ GameField::GameField() : x_(FIELD_X), y_(FIELD_Y)
 {
     Eigen::Vector2f pos(40, 38);
     this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(pos)));
+    for(int i = 2; i < 3; ++i)
+        for(int j = 35; j < 45; ++j)
+            this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(Eigen::Vector2f(j, i))));
 
     return;
 }

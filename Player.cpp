@@ -69,7 +69,11 @@ void Player::update()
  * @brief Playerクラスのデストラクタ
  */
 Player::~Player()
-{}
+{
+    auto status = GameSystem::getStatus();
+    status->setGameOver();
+    return;
+}
 
 /*!
  * @brief Player描画する
@@ -103,7 +107,7 @@ void Player::on_collide(std::shared_ptr<GameObject> other)
     if(other.get() == this) return;
     if(other->getType() == BULLET)
     {
-         this->hp_ -= 10;
+        this->hp_ -= 10;
     }
 
     return;

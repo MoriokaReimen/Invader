@@ -5,6 +5,7 @@ SRC = \
 	GameField.cpp \
 	InputKeep.cpp \
 	Player.cpp \
+	Enemy.cpp \
 	Screen.cpp \
 	GameObject.cpp \
 	UserInput.cpp \
