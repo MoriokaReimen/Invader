@@ -10,6 +10,7 @@
 
 #include<vector>
 #include<memory>
+#include<eigen3/Eigen/Eigen>
 
 /*!
  * \class GameField
@@ -27,9 +28,9 @@ public:
     void update_objects();
 
     void get_size(int& x, int& y) const;
-    bool is_on_field(const int& x, const int& y) const;
+    bool is_on_field(const Eigen::Vector2f& pos) const;
     void addObject(std::shared_ptr<GameObject>&& object);
-    std::shared_ptr<GameObject> getObject(const int& x, const int& y);
+    std::shared_ptr<GameObject> getObject(const Eigen::Vector2f& center);
     std::vector<std::shared_ptr<GameObject>>::iterator begin();
     std::vector<std::shared_ptr<GameObject>>::iterator end();
 };
