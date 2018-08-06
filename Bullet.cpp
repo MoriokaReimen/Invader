@@ -9,14 +9,14 @@
 
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
+#include<eigen3/Eigen/Eigen>
 
 /*!
  * @brief Bulletクラスのコンストラクタ
- * @param[in] x 位置のX座標
- * @param[in] y 位置のY座標
- * @param[in] direction 進行方向
+ * @param[in] pos 位置
+ * @param[in] vel 速度
  */
-Bullet::Bullet(const int& x, const int& y, const int& direction) : GameObject(x, y, BULLET), direction_(direction)
+Bullet::Bullet(const Eigen::Vector2f& pos, const Eigen::Vector2f& vel) : GameObject(10, pos, vel, BULLET)
 {
 }
 
@@ -26,18 +26,18 @@ Bullet::Bullet(const int& x, const int& y, const int& direction) : GameObject(x,
 void Bullet::update()
 {
     /*!位置を更新*/
-    this->y_ += direction_ * 0.1;
+    pos_ += vel_;
 
     /*!弾の命中処理*/
     GameField* field = GameSystem::getField();
-    auto hit_object = field->getObject(this->x_, this->y_);
+    auto hit_object = field->getObject(pos_);
     if(hit_object != nullptr && hit_object.get() != this) {
-        hit_object->kill();
+        this->on_collide(hit_object);
     }
 
     /*!フィールド外に出たら消滅する*/
-    if(!field->is_on_field(this->x_, this->y_)) {
-        this->is_alive_ = false;
+    if(!field->is_on_field(pos_)) {
+        this->hp_ = 0;
     }
 
     return;
@@ -55,8 +55,14 @@ Bullet::~Bullet()
  */
 void Bullet::draw(Screen& screen)
 {
-    screen.print("|", this->x_, this->y_, BULLET_COLOR);
+    screen.print("|", pos_, BULLET_COLOR);
 
     return;
 }
 
+void Bullet::on_collide(std::shared_ptr<GameObject> other)
+{
+    if(other->getType() != BULLET)
+        this->hp_ = 0;
+    return;
+}

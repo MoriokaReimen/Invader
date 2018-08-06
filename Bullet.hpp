@@ -14,11 +14,11 @@
  */
 class Bullet : public GameObject
 {
-    const  int direction_; //!< 進行方向
 
 public:
-    Bullet(const int& x, const int& y, const int& direction);
-    void update();
-    ~Bullet();
-    void draw(Screen& screen);
+    Bullet(const Eigen::Vector2f& pos, const Eigen::Vector2f& vel);
+    void update() override;
+    ~Bullet() override;
+    void draw(Screen& screen) override;
+    void on_collide(std::shared_ptr<GameObject> other) override;
 };
