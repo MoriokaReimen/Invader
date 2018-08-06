@@ -11,7 +11,6 @@ SRC = \
 	Window.cpp \
 	GameSystem.cpp \
 	Bullet.cpp \
-	Enemy.cpp \
 	GameStatus.cpp \
 	Logic.cpp \
 	main.cpp

@@ -7,7 +7,6 @@
  */
 #include<GameField.hpp>
 #include<Player.hpp>
-#include<Enemy.hpp>
 #include<GameObject.hpp>
 
 #include<algorithm>
@@ -25,10 +24,6 @@ const int FIELD_Y(40); //!< フィールド縦幅
 GameField::GameField() : x_(FIELD_X), y_(FIELD_Y)
 {
     this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(40, 38)));
-
-    for(int i = 15; i < 75; ++i)
-        for(int j = 1; j < 6; ++j)
-            this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(i, j)));
 
     return;
 }
