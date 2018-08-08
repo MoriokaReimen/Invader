@@ -6,6 +6,7 @@
  * \brief Bulletクラスの実装
  */
 #include<GameObject.hpp>
+#include<eigen3/Eigen/Eigen>
 
 /*!
  * @brief GameObjectクラスのコンストラクタ
@@ -41,6 +42,16 @@ Eigen::Vector2f GameObject::getPosition()
 int GameObject::getHP()
 {
     return this->hp_;
+}
+
+/*!
+ * @brief オブジェクトの生死を返す
+ * @retval true 生存
+ * @retval false 死亡
+ */
+bool GameObject::isAlive()
+{
+    return this->hp_ > 0;
 }
 
 /*!

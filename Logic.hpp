@@ -27,5 +27,7 @@ public:
     Logic();
     ~Logic();
     void update();
+    void resolveCollision();
+    bool isCollide(std::shared_ptr<GameObject> lhs, std::shared_ptr<GameObject> rhs);
 
 };

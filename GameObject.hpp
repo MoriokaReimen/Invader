@@ -7,7 +7,7 @@
  */
 #pragma once
 #include<Screen.hpp>
-#include<eigen3/Eigen/Dense>
+#include<eigen3/Eigen/Eigen>
 
 #include<memory>
 
@@ -34,9 +34,10 @@ public:
     virtual ~GameObject() = 0;
     virtual void update() = 0;
     virtual void draw(Screen& screen) = 0;
-    virtual std::shared_ptr<GameObject> onCollide(std::shared_ptr<GameObject> other) = 0;
+    virtual void on_collide(std::shared_ptr<GameObject> other) = 0;
 
     Eigen::Vector2f getPosition();
-    int getHP();
+    bool isAlive();
     OBJECT_TYPE getType();
+    int getHP();
 };
