@@ -11,6 +11,7 @@
 #include<GameSystem.hpp>
 #include<Screen.hpp>
 #include<Bullet.hpp>
+#include<Bomb.hpp>
 
 #include<memory>
 #include<eigen3/Eigen/Eigen>
@@ -51,6 +52,9 @@ void Player::update()
         break;
     case SHOOT:
         this->shoot(pos_);
+        break;
+    case BOMB:
+        this->bomb(pos_);
         break;
     default:
         break;
@@ -97,6 +101,22 @@ void Player::shoot(const Eigen::Vector2f& pos)
     bullet_pos[1] -= 1.0;
     GameField* field = GameSystem::getField();
     field->addObject(std::shared_ptr<GameObject>(new Bullet(bullet_pos, bullet_vel)));
+
+    return;
+}
+
+/*!
+ * @brief 爆弾を発射する
+ * @param[in] x 弾の生成位置
+ * @param[in] y 弾の生成位置
+ */
+void Player::bomb(const Eigen::Vector2f& pos)
+{
+    Eigen::Vector2f bullet_pos(pos);
+    Eigen::Vector2f bullet_vel(0.0, -0.2);
+    bullet_pos[1] -= 1.0;
+    GameField* field = GameSystem::getField();
+    field->addObject(std::shared_ptr<GameObject>(new Bomb(bullet_pos, bullet_vel)));
 
     return;
 }
