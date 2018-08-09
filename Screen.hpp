@@ -53,4 +53,5 @@ public:
     void printGameOver();
     void printPlayerWin();
     void printScore();
+    void printHP();
 };
