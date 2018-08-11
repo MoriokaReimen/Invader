@@ -13,7 +13,7 @@
 
 #include<unistd.h>
 
-const int DELAY(15000);
+const int DELAY(100);
 const int MAX_X(70);
 const int MAX_Y(50);
 

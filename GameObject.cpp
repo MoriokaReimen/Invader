@@ -30,18 +30,9 @@ GameObject::~GameObject()
  * @brief オブジェクトの位置を返す
  * @return オブジェクトの位置
  */
-Eigen::Vector2f GameObject::getPosition()
+Eigen::Vector2f GameObject::getPosition() const
 {
     return this->pos_;
-}
-
-/*!
- * @brief オブジェクトのHPを返す
- * @return オブジェクトのHP
- */
-int GameObject::getHP()
-{
-    return this->hp_;
 }
 
 /*!
@@ -49,7 +40,7 @@ int GameObject::getHP()
  * @retval true 生存
  * @retval false 死亡
  */
-bool GameObject::isAlive()
+bool GameObject::isAlive() const
 {
     return this->hp_ > 0;
 }
@@ -58,8 +49,17 @@ bool GameObject::isAlive()
  * @brief オブジェクトのタイプを返す
  * @return オブジェクトのタイプ
  */
-OBJECT_TYPE GameObject::getType()
+OBJECT_TYPE GameObject::getType() const
 {
     return this->type_;
+}
+
+/*!
+ * @brief オブジェクトのHPを返す
+ * @return オブジェクトのHP
+ */
+int GameObject::getHP() const
+{
+    return this->hp_;
 }
 

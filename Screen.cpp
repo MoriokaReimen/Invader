@@ -73,6 +73,7 @@ void Screen::update() {
         this->printPlayerWin();
 
     printScore();
+    printHP();
 
     wrefresh(win_);
     return;
@@ -282,4 +283,29 @@ void Screen::printScore()
     std::snprintf(msg, sizeof(msg), "Score: %d", score);
     this->print(msg, 90, 3);
 
+}
+
+/*!
+ * @brief スコアを表示する
+ */
+void Screen::printHP()
+{
+    GameField* field = GameSystem::getField();
+    int hp(0);
+    for(auto it = field->begin(); it != field->end(); ++it)
+    {
+        if((*it)->getType() == PLAYER)
+        {
+            hp = (*it)->getHP();
+        }
+    }
+
+    std::string msg("HP: ");
+    for(int i = 0; i < hp/10; ++i)
+    {
+        msg += "#";
+    }
+    this->print(msg, 90, 4);
+
+    return;
 }

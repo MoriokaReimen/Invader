@@ -36,8 +36,8 @@ public:
     virtual void draw(Screen& screen) = 0;
     virtual void on_collide(std::shared_ptr<GameObject> other) = 0;
 
-    Eigen::Vector2f getPosition();
-    bool isAlive();
-    OBJECT_TYPE getType();
-    int getHP();
+    Eigen::Vector2f getPosition() const;
+    bool isAlive() const;
+    OBJECT_TYPE getType() const;
+    int getHP() const;
 };
