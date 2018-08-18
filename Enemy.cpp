@@ -46,13 +46,13 @@ void Enemy::update()
     const int next_action = distribution_(generator_) % 200;
     switch(next_action) {
     case 1:
-        next_pos[0]+=1.0;
+        next_pos[0]+=10.0;
         break;
     case 2:
-        next_pos[0]-=1.0;
+        next_pos[0]-=10.0;
         break;
     case 3:
-        next_pos[1]+=1.0;
+        next_pos[1]+=10.0;
         break;
     case 4:
         shoot(pos_);
