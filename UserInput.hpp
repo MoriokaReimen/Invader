@@ -8,21 +8,15 @@
 #pragma once
 #include<Window.hpp>
 
-const char ERR(-1);
-
-typedef struct _win_st WINDOW;
-
 /*!
  * \class UserInput
- * \brief キー入力の保持クラス
+ * \brief キー入力の取得クラス
  */
 class UserInput
 {
-    WINDOW* win_; //!< cursesのwindowポインタ
-    UserInput() = delete;
     UserInput& operator=(const UserInput& other) = delete;
 public:
-    UserInput(Window& window);
+    UserInput();
     ~UserInput();
     char store();
 };

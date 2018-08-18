@@ -12,10 +12,8 @@
 
 #include<ncurses.h>
 
-UserInput::UserInput(Window& window)
+UserInput::UserInput()
 {
-    this->win_ = window.get_raw();
-    nodelay(win_, true);
     return;
 }
 
@@ -26,30 +24,50 @@ UserInput::~UserInput()
 
 char UserInput::store()
 {
-    const char ch =  wgetch(win_);
     InputKeep* keep = GameSystem::getInputKeep();
-    switch(ch) {
-    case 'k':
-        keep->store(UP);
-        break;
-    case 'j':
-        keep->store(DOWN);
-        break;
-    case 'h':
-        keep->store(RIGHT);
-        break;
-    case 'l':
-        keep->store(LEFT);
-        break;
-    case 's':
-        keep->store(SHOOT);
-        break;
-    case 'b':
-        keep->store(BOMB);
-        break;
-    case 'q':
-        keep->store(GAME_END);
-        break;
+    SDL_Event event;
+    char ch;
+    while(SDL_PollEvent(&event))
+    {
+        switch(event.type)
+        {
+            case SDL_KEYDOWN:
+                switch(event.key.keysym.sym) {
+                case SDLK_k:
+                    ch = 'k';
+                    keep->store(UP);
+                    break;
+                case SDLK_j:
+                    ch = 'j';
+                    keep->store(DOWN);
+                    break;
+                case SDLK_h:
+                    ch = 'h';
+                    keep->store(RIGHT);
+                    break;
+                case SDLK_l:
+                    ch = 'l';
+                    keep->store(LEFT);
+                    break;
+                case SDLK_s:
+                    ch = 's';
+                    keep->store(SHOOT);
+                    break;
+                case SDLK_b:
+                    ch = 'b';
+                    keep->store(BOMB);
+                    break;
+                case SDLK_q:
+                    ch = 'q';
+                    keep->store(GAME_END);
+                    break;
+                default:
+                    break;
+                }
+        default:
+            break;
+        }
+
     }
 
     return ch;
