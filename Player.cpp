@@ -38,16 +38,16 @@ void Player::update()
 
     switch(key) {
     case UP:
-        next_pos[1] -= 1;
+        next_pos[1] -= 10;
         break;
     case DOWN:
-        next_pos[1] += 1;
+        next_pos[1] += 10;
         break;
     case RIGHT:
-        next_pos[0] -= 1;
+        next_pos[0] -= 10;
         break;
     case LEFT:
-        next_pos[0] += 1;
+        next_pos[0] += 10;
         break;
     case SHOOT:
         this->shoot(pos_);

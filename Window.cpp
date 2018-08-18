@@ -3,7 +3,7 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
-Window::Window() : SCREEN_WIDTH(150), SCREEN_HEIGHT(250)
+Window::Window() : SCREEN_WIDTH(600), SCREEN_HEIGHT(1000)
 {
     /*!SDLの初期化*/
     int err = SDL_Init(SDL_INIT_VIDEO);
