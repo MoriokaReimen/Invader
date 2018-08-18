@@ -19,7 +19,7 @@ public:
     Player(const Eigen::Vector2f& pos);
     void update() override;
     ~Player() override;
-    void draw(Screen& screen) override;
+    void draw(Render& render) override;
     void shoot(const Eigen::Vector2f& pos);
     void bomb(const Eigen::Vector2f& pos);
     void on_collide(std::shared_ptr<GameObject> other) override;

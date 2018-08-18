@@ -47,9 +47,9 @@ Bullet::~Bullet()
  * @brief 弾を描画する
  * @param[in,out] screen 描画するスクリーンのクラス
  */
-void Bullet::draw(Screen& screen)
+void Bullet::draw(Render& render)
 {
-    screen.print("|", pos_, BULLET_COLOR);
+    render.renderImage(BULLET_IMAGE, pos_);
 
     return;
 }

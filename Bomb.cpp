@@ -49,9 +49,9 @@ Bomb::~Bomb()
  * @brief 弾を描画する
  * @param[in,out] screen 描画するスクリーンのクラス
  */
-void Bomb::draw(Screen& screen)
+void Bomb::draw(Render& render)
 {
-    screen.print("O", pos_, BULLET_COLOR);
+    render.renderImage(BOMB_IMAGE, pos_);
 
     return;
 }

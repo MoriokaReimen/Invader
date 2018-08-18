@@ -9,7 +9,6 @@
 
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
-#include<Screen.hpp>
 #include<Bullet.hpp>
 
 #include<memory>
@@ -82,9 +81,9 @@ Enemy::~Enemy()
  * @brief Enemyを描画する
  * @param[in,out] screen 描画するスクリーンのクラス
  */
-void Enemy::draw(Screen& screen)
+void Enemy::draw(Render& render)
 {
-    screen.print("M", pos_, ENEMY_COLOR);
+    render.renderImage(ENEMY_IMAGE, pos_);
     return;
 }
 

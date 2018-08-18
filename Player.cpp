@@ -9,7 +9,6 @@
 
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
-#include<Screen.hpp>
 #include<Bullet.hpp>
 #include<Bomb.hpp>
 
@@ -83,9 +82,9 @@ Player::~Player()
  * @brief Player描画する
  * @param[in,out] screen 描画するスクリーンのクラス
  */
-void Player::draw(Screen& screen)
+void Player::draw(Render& render)
 {
-    screen.print("@", pos_, PLAYER_COLOR);
+    render.renderImage(PLAYER_IMAGE, pos_);
     return;
 }
 

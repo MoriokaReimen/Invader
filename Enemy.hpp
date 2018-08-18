@@ -24,7 +24,7 @@ public:
     Enemy(const Eigen::Vector2f& pos);
     void update() override;
     ~Enemy() override;
-    void draw(Screen& screen) override;
+    void draw(Render& render) override;
     void shoot(const Eigen::Vector2f& pos);
     void on_collide(std::shared_ptr<GameObject> other) override;
 };

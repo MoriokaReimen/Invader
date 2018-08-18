@@ -19,6 +19,6 @@ public:
     Bomb(const Eigen::Vector2f& pos, const Eigen::Vector2f& vel);
     void update() override;
     ~Bomb() override;
-    void draw(Screen& screen) override;
+    void draw(Render& render) override;
     void on_collide(std::shared_ptr<GameObject> other) override;
 };
