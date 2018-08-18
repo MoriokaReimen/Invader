@@ -121,6 +121,6 @@ bool Logic::isCollide(std::shared_ptr<GameObject> lhs, std::shared_ptr<GameObjec
     Eigen::Vector2f rpos = rhs->getPosition();
     Eigen::Vector2f diff = lpos - rpos;
     double distance = diff.cwiseAbs().sum();
-    if(distance < 1.0) return true;
+    if(distance < 20.0) return true;
     return false;
 }

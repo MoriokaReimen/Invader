@@ -51,7 +51,7 @@ Bomb::~Bomb()
  */
 void Bomb::draw(Render& render)
 {
-    render.renderImage(BOMB_IMAGE, pos_);
+    render.renderImage(BOMB_IMAGE, 20, 20, pos_);
 
     return;
 }
@@ -64,14 +64,14 @@ void Bomb::on_collide(std::shared_ptr<GameObject> other)
     if(other->getType() != BULLET)
     {
         this->hp_ = 0;
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 1, pos_[1]), Eigen::Vector2f(0.2, 0.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 1, pos_[1]+1), Eigen::Vector2f(0.2, 0.2))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0], pos_[1]+1), Eigen::Vector2f(0.0, 0.2))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 1, pos_[1]-1), Eigen::Vector2f(0.2, -0.2))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 1, pos_[1]), Eigen::Vector2f(-0.2, 0.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 1, pos_[1]-1), Eigen::Vector2f(-0.2, -0.2))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 1, pos_[1]), Eigen::Vector2f(-0.2, 0.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 1, pos_[1]+1), Eigen::Vector2f(-0.2, 0.2))));
+        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 20, pos_[1]), Eigen::Vector2f(10.0, 0.0))));
+        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 20, pos_[1]+20), Eigen::Vector2f(10.0, 10.0))));
+        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0], pos_[1]+20), Eigen::Vector2f(0.0, 10.0))));
+        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 20, pos_[1]-20), Eigen::Vector2f(10.0, -10.0))));
+        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]), Eigen::Vector2f(-10.0, 0.0))));
+        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]-20), Eigen::Vector2f(-10.0, -10.0))));
+        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]), Eigen::Vector2f(-10.0, 0.0))));
+        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]+20), Eigen::Vector2f(-10.0, 10.0))));
     }
 
     return;

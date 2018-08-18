@@ -83,7 +83,7 @@ Enemy::~Enemy()
  */
 void Enemy::draw(Render& render)
 {
-    render.renderImage(ENEMY_IMAGE, pos_);
+    render.renderImage(ENEMY_IMAGE, 20, 20, pos_);
     return;
 }
 
@@ -95,8 +95,8 @@ void Enemy::draw(Render& render)
 void Enemy::shoot(const Eigen::Vector2f& pos)
 {
     Eigen::Vector2f bullet_pos(pos);
-    Eigen::Vector2f bullet_vel(0.0, 0.2);
-    bullet_pos[1] += 1.0;
+    Eigen::Vector2f bullet_vel(0.0, 10);
+    bullet_pos[1] += 20.0;
     GameField* field = GameSystem::getField();
     field->addObject(std::shared_ptr<GameObject>(new Bullet(bullet_pos, bullet_vel)));
 

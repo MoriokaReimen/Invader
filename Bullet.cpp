@@ -49,7 +49,7 @@ Bullet::~Bullet()
  */
 void Bullet::draw(Render& render)
 {
-    render.renderImage(BULLET_IMAGE, pos_);
+    render.renderImage(BULLET_IMAGE, 20, 20, pos_);
 
     return;
 }
