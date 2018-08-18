@@ -1,25 +1,20 @@
-/*!
- * \file Window.hpp
- *
- * \author MoriokaReimen
- * \date 2018.08.04
- * \brief Windowクラスの宣言
- */
 #pragma once
+#include <string>
+#include <iostream>
+#include <SDL2/SDL.h>
 
-typedef struct _win_st WINDOW;
+void logSDLError(std::ostream &os, const std::string &msg);
 
-/*!
- * \class Window
- * \brief cursesのwindowポインタ保持クラス
- */
 class Window
 {
-    WINDOW* win_;
-    Window& operator=(const Window& other);
-    Window(const Window& other);
+    const int SCREEN_WIDTH;
+    const int SCREEN_HEIGHT;
+    SDL_Window* window_;
+    Window(const Window& other) = delete;
+    Window& operator=(const Window& other) = delete;
 public:
     Window();
     ~Window();
-    WINDOW* get_raw() const;
+    SDL_Window* get();
+
 };

@@ -1,42 +1,44 @@
-/*!
- * \file Window.cpp
- *
- * \author MoriokaReimen
- * \date 2018.08.04
- * \brief Windowクラスの実装
- */
-#include<Window.hpp>
+#include"Window.hpp"
+#include <string>
+#include <iostream>
+#include <SDL2/SDL.h>
 
-#include<ncurses.h>
-
-/*!
- * @brief Windowクラスのコンストラクタ
- */
-Window::Window() : win_(NULL)
+Window::Window() : SCREEN_WIDTH(640), SCREEN_HEIGHT(480)
 {
-    win_ = initscr();
-    noecho();
-    curs_set(FALSE);
+    /*!SDLの初期化*/
+    int err = SDL_Init(SDL_INIT_VIDEO);
+    if(err != 0)
+    {
+        logSDLError(std::cout, "SDL_Init");
+    }
+
+    /*!Windowの初期化*/
+    window_ = SDL_CreateWindow("Demo", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                               SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    if (window_ == nullptr) {
+        logSDLError(std::cout, "CreateWindow");
+        SDL_Quit();
+    }
 
     return;
 }
 
-/*!
- * @brief Windowクラスのデストラクタ
- */
 Window::~Window()
 {
-    endwin();
+    SDL_DestroyWindow(window_);
+    SDL_Quit();
 
     return;
 }
 
-/*!
- * @brief WINDOWのポインタを取得する
- * @return WINDOWへのポインタ
- */
-WINDOW* Window::get_raw() const
+SDL_Window* Window::get()
 {
-    return win_;
+    return this->window_;
 }
 
+void logSDLError(std::ostream &os, const std::string &msg)
+{
+    os << msg << " error: " << SDL_GetError() << std::endl;
+
+    return;
+}
