@@ -1,5 +1,6 @@
 #include"Render.hpp"
 #include"ImageKeep.hpp"
+#include"GameSystem.hpp"
 
 #include<SDL2/SDL.h>
 #include<SDL2/SDL_ttf.h>
@@ -85,4 +86,11 @@ void Render::renderText(const FontID& id, const Eigen::Vector2f& pos, const std:
 
 void Render::update()
 {
+    GameField* field = GameSystem::getField();
+    for(auto it = field->begin(); it != field->end(); ++it)
+    {
+        (*it)->draw(*this);
+    }
+
+    return;
 }
