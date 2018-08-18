@@ -15,6 +15,7 @@ SRC = \
 	Bomb.cpp \
 	GameStatus.cpp \
 	Logic.cpp \
+	GameTime.cpp \
 	main.cpp
 OBJ = $(SRC:.cpp=.o)
 
