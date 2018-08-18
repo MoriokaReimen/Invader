@@ -128,7 +128,7 @@ void Render::printScore()
     int score = status->getScore();
 
     char buff[125];
-    sprintf(buff, "Score:%.4d", score);
+    sprintf(buff, "Score:%4d", score);
     std::string msg(buff);
     this->renderText(NORMAL_FONT, Eigen::Vector2f(460, 0), msg);
 
