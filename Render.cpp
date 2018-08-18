@@ -86,11 +86,14 @@ void Render::renderText(const FontID& id, const Eigen::Vector2f& pos, const std:
 
 void Render::update()
 {
+    this->clear();
     GameField* field = GameSystem::getField();
     for(auto it = field->begin(); it != field->end(); ++it)
     {
         (*it)->draw(*this);
     }
+
+    this->refresh();
 
     return;
 }
