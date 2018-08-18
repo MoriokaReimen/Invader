@@ -11,10 +11,12 @@
 #include<GameStatus.hpp>
 #include<GameField.hpp>
 #include<GameStatus.hpp>
+#include<GameTime.hpp>
 
 InputKeep* GameSystem::input_keep;
 GameField* GameSystem::field;
 GameStatus* GameSystem::status;
+GameTime* GameSystem::time;
 
 /*!
  * @brief GameSystemを初期化する
@@ -24,6 +26,7 @@ void GameSystem::init()
     input_keep = new InputKeep();
     field = new GameField();
     status = new GameStatus();
+    time = new GameTime(50);
 
     return;
 }
@@ -68,4 +71,14 @@ void GameSystem::cleanup()
 GameStatus* GameSystem::getStatus()
 {
     return status;
+}
+
+/*!
+ * @brief GameTimeクラスへのポインタを返す
+ * @return GameTimeへのポインタ
+ * @warning GameSystem::initが先に呼ばれている必要があります
+ */
+GameTime* GameSystem::getTime()
+{
+    return time;
 }

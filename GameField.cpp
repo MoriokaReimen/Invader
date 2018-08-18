@@ -28,8 +28,9 @@ GameField::GameField() : x_(FIELD_X), y_(FIELD_Y)
     Eigen::Vector2f pos(40, 38);
     this->objects_.emplace_back(std::shared_ptr<GameObject>(new Player(pos)));
     for(int i = 2; i < 8; ++i)
-        for(int j = 15; j < 75; ++j)
-            this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(Eigen::Vector2f(j, i))));
+        this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(Eigen::Vector2f(15, i))));
+    // for(int j = 15; j < 75; ++j)
+    //this->objects_.emplace_back(std::shared_ptr<GameObject>(new Enemy(Eigen::Vector2f(j, i))));
 
     return;
 }

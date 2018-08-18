@@ -54,4 +54,5 @@ public:
     void printPlayerWin();
     void printScore();
     void printHP();
+    void printTPF();
 };

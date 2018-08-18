@@ -26,14 +26,16 @@ int main(int argc, char *argv[])
     Logic logic;
 
     GameStatus* status = GameSystem::getStatus();
+    GameTime* time = GameSystem::getTime();
 
     while (1) {
+        time->update();
         input.store();
         logic.update();
 
         screen.update();
 
-        usleep(DELAY);
+        time->onLoopEnd();
 
         if(status->isGameEnd()) break;
     }

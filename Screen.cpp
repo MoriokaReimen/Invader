@@ -74,6 +74,7 @@ void Screen::update() {
 
     printScore();
     printHP();
+    printTPF();
 
     wrefresh(win_);
     return;
@@ -306,6 +307,22 @@ void Screen::printHP()
         msg += "#";
     }
     this->print(msg, 90, 4);
+
+    return;
+}
+
+/*!
+ * @brief TPFを表示する
+ */
+void Screen::printTPF()
+{
+    char buff[128];
+    auto time = GameSystem::getTime();
+    int tpf = time->getTPF();
+    sprintf(buff, "TPF: %d [msec]", tpf);
+    std::string msg(buff);
+
+    this->print(msg, 90, 5);
 
     return;
 }
