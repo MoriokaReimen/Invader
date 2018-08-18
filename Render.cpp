@@ -21,7 +21,7 @@ Render::Render(Window& window)
 
     fonts_.init(*this);
     fonts_.registerFont(NORMAL_FONT, "./asset/Roboto-Regular.ttf");
-    fonts_.registerFont(NORMAL_FONT, "./asset/Roboto-Bold.ttf");
+    fonts_.registerFont(BOLD_FONT, "./asset/Roboto-Bold.ttf");
 
     return;
 }
@@ -93,6 +93,8 @@ void Render::update()
         (*it)->draw(*this);
     }
     this->printHP();
+    this->printGameOver();
+    this->printPlayerWin();
 
     this->refresh();
 
@@ -114,7 +116,31 @@ void Render::printHP()
     char buff[125];
     sprintf(buff, "HP:%d%%", hp);
     std::string msg(buff);
-    this->renderText(NORMAL_FONT, Eigen::Vector2f(300, 0), msg);
+    this->renderText(NORMAL_FONT, Eigen::Vector2f(250, 0), msg);
+
+    return;
+}
+
+void Render::printGameOver()
+{
+    GameStatus* status = GameSystem::getStatus();
+    if(status->isGameOver())
+    {
+        std::string msg("GAME OVER");
+        this->renderText(BOLD_FONT, Eigen::Vector2f(250, 500), msg);
+    }
+
+    return;
+}
+
+void Render::printPlayerWin()
+{
+    GameStatus* status = GameSystem::getStatus();
+    if(status->isPlayerWin())
+    {
+        std::string msg("YOU WIN");
+        this->renderText(BOLD_FONT, Eigen::Vector2f(250, 500), msg);
+    }
 
     return;
 }

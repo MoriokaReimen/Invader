@@ -23,4 +23,6 @@ public:
     void renderText(const FontID& id, const Eigen::Vector2f& pos, const std::string msg);
     void update();
     void printHP();
+    void printGameOver();
+    void printPlayerWin();
 };
