@@ -4,3 +4,8 @@ main
 *.orig
 html/*
 latex/*
+Makefile
+CMakeCache.txt
+CMakeFiles
+Invader
+cmake_install.cmake
