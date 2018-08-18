@@ -31,6 +31,9 @@ char UserInput::store()
     {
         switch(event.type)
         {
+            case SDL_QUIT:
+                keep->store(GAME_END);
+                break;
             case SDL_KEYDOWN:
                 switch(event.key.keysym.sym) {
                 case SDLK_k:
