@@ -93,6 +93,7 @@ void Render::update()
         (*it)->draw(*this);
     }
     this->printHP();
+    this->printScore();
     this->printGameOver();
     this->printPlayerWin();
 
@@ -116,7 +117,20 @@ void Render::printHP()
     char buff[125];
     sprintf(buff, "HP:%d%%", hp);
     std::string msg(buff);
-    this->renderText(NORMAL_FONT, Eigen::Vector2f(250, 0), msg);
+    this->renderText(NORMAL_FONT, Eigen::Vector2f(0, 0), msg);
+
+    return;
+}
+
+void Render::printScore()
+{
+    GameStatus* status = GameSystem::getStatus();
+    int score = status->getScore();
+
+    char buff[125];
+    sprintf(buff, "Score:%.4d", score);
+    std::string msg(buff);
+    this->renderText(NORMAL_FONT, Eigen::Vector2f(460, 0), msg);
 
     return;
 }
