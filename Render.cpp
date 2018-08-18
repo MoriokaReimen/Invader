@@ -82,3 +82,7 @@ void Render::renderText(const FontID& id, const Eigen::Vector2f& pos, const std:
     SDL_FreeSurface(surface);
     SDL_DestroyTexture(texture);
 }
+
+void Render::update()
+{
+}

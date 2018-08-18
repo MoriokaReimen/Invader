@@ -21,4 +21,5 @@ public:
     void renderImage(const ImageID& id, const Eigen::Vector2f& pos);
     void renderImage(const ImageID& id, const int& width, const int& height, const Eigen::Vector2f& pos);
     void renderText(const FontID& id, const Eigen::Vector2f& pos, const std::string msg);
+    void update();
 };

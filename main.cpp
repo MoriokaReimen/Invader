@@ -5,11 +5,11 @@
  * \date 2018.08.04
  * \brief main関数の実装
  */
-#include<Window.hpp>
-#include<Screen.hpp>
-#include<UserInput.hpp>
-#include<GameSystem.hpp>
-#include<Logic.hpp>
+#include"Window.hpp"
+#include"UserInput.hpp"
+#include"GameSystem.hpp"
+#include"Logic.hpp"
+#include"Render.hpp"
 
 #include<unistd.h>
 
@@ -21,8 +21,8 @@ int main(int argc, char *argv[])
 {
     GameSystem::init();
     Window win;
-    Screen screen(win);
-    UserInput input(win);
+    Render render(win);
+    UserInput input;
     Logic logic;
 
     GameStatus* status = GameSystem::getStatus();
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
         input.store();
         logic.update();
 
-        screen.update();
+        render.update();
 
         time->onLoopEnd();
 
