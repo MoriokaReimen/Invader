@@ -92,8 +92,29 @@ void Render::update()
     {
         (*it)->draw(*this);
     }
+    this->printHP();
 
     this->refresh();
+
+    return;
+}
+
+void Render::printHP()
+{
+    GameField* field = GameSystem::getField();
+    int hp(0);
+    for(auto it = field->begin(); it != field->end(); ++it)
+    {
+        if((*it)->getType() == PLAYER)
+        {
+            hp = (*it)->getHP();
+        }
+    }
+
+    char buff[125];
+    sprintf(buff, "HP:%d%%", hp);
+    std::string msg(buff);
+    this->renderText(NORMAL_FONT, Eigen::Vector2f(300, 0), msg);
 
     return;
 }
