@@ -13,7 +13,7 @@ Window::Window() : SCREEN_WIDTH(600), SCREEN_HEIGHT(1000)
     }
 
     /*!Windowの初期化*/
-    window_ = SDL_CreateWindow("Demo", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+    window_ = SDL_CreateWindow("Invader", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     if (window_ == nullptr) {
         logSDLError(std::cout, "CreateWindow");
