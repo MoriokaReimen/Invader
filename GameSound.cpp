@@ -11,6 +11,8 @@ GameSound::GameSound()
 
     sounds_.registerSound(SHOOT_SOUND, "./asset/Shoot.wav");
     sounds_.registerSound(EXPLODE_SOUND, "./asset/Explode.wav");
+    sounds_.registerSound(PLAYER_WIN_SOUND, "./asset/PlayerWin.wav");
+    sounds_.registerSound(GAME_OVER_SOUND, "./asset/GameOver.wav");
 
     return;
 }

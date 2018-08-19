@@ -7,6 +7,9 @@
  */
 #include<GameStatus.hpp>
 
+#include<GameSystem.hpp>
+#include<GameSound.hpp>
+
 /*!
  * @brief GameStatusのコンストラクタ
  */
@@ -48,6 +51,11 @@ bool GameStatus::isPlayerWin() const
  */
 void GameStatus::setGameOver()
 {
+    if(!is_game_over_)
+    {
+        GameSound* sound = GameSystem::getSound();
+        sound->playSound(GAME_OVER_SOUND);
+    }
     is_game_over_ = true;
     return;
 }
@@ -66,6 +74,11 @@ void GameStatus::setGameEnd()
  */
 void GameStatus::setPlayerWin()
 {
+    if(!is_player_win_)
+    {
+        GameSound* sound = GameSystem::getSound();
+        sound->playSound(PLAYER_WIN_SOUND);
+    }
     is_player_win_ = true;
     return;
 }

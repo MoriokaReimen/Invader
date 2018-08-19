@@ -4,8 +4,9 @@
 
 enum SoundID {
     SHOOT_SOUND,
-    EXPLODE_SOUND
-
+    EXPLODE_SOUND,
+    PLAYER_WIN_SOUND,
+    GAME_OVER_SOUND
 };
 
 class SoundKeep
