@@ -51,8 +51,7 @@ bool GameStatus::isPlayerWin() const
  */
 void GameStatus::setGameOver()
 {
-    if(!is_game_over_)
-    {
+    if(!is_game_over_) {
         GameSound* sound = GameSystem::getSound();
         sound->playSound(GAME_OVER_SOUND);
     }
@@ -74,8 +73,7 @@ void GameStatus::setGameEnd()
  */
 void GameStatus::setPlayerWin()
 {
-    if(!is_player_win_)
-    {
+    if(!is_player_win_) {
         GameSound* sound = GameSystem::getSound();
         sound->playSound(PLAYER_WIN_SOUND);
     }
