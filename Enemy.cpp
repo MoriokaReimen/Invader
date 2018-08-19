@@ -38,21 +38,21 @@ void Enemy::update()
     GameStatus* status = GameSystem::getStatus();
     int _, field_y;
     field->get_size(_, field_y);
-    if(this->pos_[1] > (field_y - 3))
+    if(this->pos_[1] > (field_y - 30))
         status->setGameOver();
 
     /*!ランダムに動作を設定*/
     Eigen::Vector2f next_pos(pos_);
-    const int next_action = distribution_(generator_) % 200;
+    const int next_action = distribution_(generator_) % 100;
     switch(next_action) {
     case 1:
-        next_pos[0]+=10.0;
+        next_pos[0]+=20.0;
         break;
     case 2:
-        next_pos[0]-=10.0;
+        next_pos[0]-=20.0;
         break;
     case 3:
-        next_pos[1]+=10.0;
+        next_pos[1]+=20.0;
         break;
     case 4:
         shoot(pos_);
