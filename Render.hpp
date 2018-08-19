@@ -26,4 +26,5 @@ public:
     void printScore();
     void printGameOver();
     void printPlayerWin();
+    void renderBackGround();
 };

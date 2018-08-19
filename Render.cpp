@@ -18,6 +18,7 @@ Render::Render(Window& window)
     images_.registerImage(BULLET_IMAGE, "./asset/Bullet.png");
     images_.registerImage(ENEMY_IMAGE, "./asset/Enemy.png");
     images_.registerImage(BOMB_IMAGE, "./asset/Bomb.png");
+    images_.registerImage(BACK_GROUND_IMAGE, "./asset/Space.jpg");
 
     fonts_.init(*this);
     fonts_.registerFont(NORMAL_FONT, "./asset/Roboto-Regular.ttf");
@@ -87,6 +88,7 @@ void Render::renderText(const FontID& id, const Eigen::Vector2f& pos, const std:
 void Render::update()
 {
     this->clear();
+    this->renderBackGround();
     GameField* field = GameSystem::getField();
     for(auto it = field->begin(); it != field->end(); ++it) {
         (*it)->draw(*this);
@@ -150,6 +152,13 @@ void Render::printPlayerWin()
         std::string msg("YOU WIN");
         this->renderText(BOLD_FONT, Eigen::Vector2f(250, 500), msg);
     }
+
+    return;
+}
+
+void Render::renderBackGround()
+{
+    this->renderImage(BACK_GROUND_IMAGE, 600, 1000, Eigen::Vector2f(0.0, 0.0));
 
     return;
 }

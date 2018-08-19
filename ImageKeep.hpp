@@ -9,7 +9,8 @@ enum ImageID {
     PLAYER_IMAGE,
     ENEMY_IMAGE,
     BULLET_IMAGE,
-    BOMB_IMAGE
+    BOMB_IMAGE,
+    BACK_GROUND_IMAGE
 };
 
 class Render;
