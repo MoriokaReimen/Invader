@@ -7,8 +7,7 @@ Window::Window() : SCREEN_WIDTH(600), SCREEN_HEIGHT(1000)
 {
     /*!SDLの初期化*/
     int err = SDL_Init(SDL_INIT_VIDEO);
-    if(err != 0)
-    {
+    if(err != 0) {
         logSDLError(std::cout, "SDL_Init");
     }
 

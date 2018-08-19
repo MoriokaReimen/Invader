@@ -48,8 +48,7 @@ void Logic::update()
         status->setGameEnd();
 
     /*!敵がいなくなればプレイヤーの勝利フラグを設定*/
-    if(0 == this->countEnemy())
-    {
+    if(0 == this->countEnemy()) {
         status -> setPlayerWin();
     }
 
@@ -57,8 +56,8 @@ void Logic::update()
 
     /*!フィールド上のオブジェクトの更新*/
     for(auto it = this->field_->begin();
-            it != this->field_->end();
-            it++) {
+        it != this->field_->end();
+        it++) {
         (*it)->update();
     }
 
@@ -82,8 +81,8 @@ int Logic::countEnemy() const
     OBJECT_TYPE type;
 
     for(auto it = this->field_->begin();
-            it != this->field_->end();
-            it++) {
+        it != this->field_->end();
+        it++) {
         type = (*it)->getType();
         if(type == ENEMY) count++;
     }
@@ -97,12 +96,9 @@ int Logic::countEnemy() const
 void Logic::resolveCollision()
 {
     GameField* field = GameSystem::getField();
-    for(auto i = field->begin(); i != field->end(); ++i)
-    {
-        for(auto j = i; j != field->end(); ++j)
-        {
-            if(isCollide(*i, *j))
-            {
+    for(auto i = field->begin(); i != field->end(); ++i) {
+        for(auto j = i; j != field->end(); ++j) {
+            if(isCollide(*i, *j)) {
                 (*i)->on_collide(*j);
                 (*j)->on_collide(*i);
             }

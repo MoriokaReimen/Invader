@@ -5,8 +5,7 @@
 #include<map>
 #include<string>
 
-enum ImageID
-{
+enum ImageID {
     PLAYER_IMAGE,
     ENEMY_IMAGE,
     BULLET_IMAGE,

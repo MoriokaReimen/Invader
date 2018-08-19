@@ -5,8 +5,7 @@
 #include<map>
 #include<string>
 
-enum FontID
-{
+enum FontID {
     NORMAL_FONT,
     BOLD_FONT
 };

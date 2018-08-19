@@ -19,8 +19,7 @@ void ImageKeep::init(Render& render)
 
 ImageKeep::~ImageKeep()
 {
-    for(auto elem : images_)
-    {
+    for(auto elem : images_) {
         SDL_DestroyTexture(elem.second);
     }
 
@@ -31,13 +30,10 @@ bool ImageKeep::registerImage(const ImageID& id, const std::string& path)
 {
     ImageID temp(id);
     SDL_Texture* image = IMG_LoadTexture(render_, path.c_str());
-    if(image != nullptr)
-    {
+    if(image != nullptr) {
         images_.emplace(temp, image);
         return true;
-    }
-    else
-    {
+    } else {
         std::cout << "Image Load Error: " << path << std::endl;
     }
 
@@ -47,8 +43,7 @@ bool ImageKeep::registerImage(const ImageID& id, const std::string& path)
 SDL_Texture* ImageKeep::getImage(const ImageID& id)
 {
     SDL_Texture* ret(nullptr);
-    if(images_.count(id))
-    {
+    if(images_.count(id)) {
         ret = images_.at(id);
     }
     return ret;

@@ -61,8 +61,7 @@ void Bomb::on_collide(std::shared_ptr<GameObject> other)
     Eigen::Vector2f bullet_pos(pos_);
     Eigen::Vector2f bullet_vel(0.0, -0.2);
     GameField* field = GameSystem::getField();
-    if(other->getType() != BULLET)
-    {
+    if(other->getType() != BULLET) {
         this->hp_ = 0;
         field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 20, pos_[1]), Eigen::Vector2f(10.0, 0.0))));
         field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 20, pos_[1]+20), Eigen::Vector2f(10.0, 10.0))));

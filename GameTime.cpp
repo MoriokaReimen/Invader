@@ -58,8 +58,7 @@ void GameTime::onLoopEnd()
     /*! target_tpf_になるようsleepする */
     auto end_time = std::chrono::system_clock::now();
     auto sleep_time = game_time_ - end_time;
-    if(sleep_time.count() > 0)
-    {
+    if(sleep_time.count() > 0) {
         std::this_thread::sleep_for(sleep_time);
     }
 

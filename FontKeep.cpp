@@ -20,8 +20,7 @@ void FontKeep::init(Render& render)
 
 FontKeep::~FontKeep()
 {
-    for(auto elem : fonts_)
-    {
+    for(auto elem : fonts_) {
         TTF_CloseFont(elem.second);
     }
 
@@ -34,13 +33,10 @@ bool FontKeep::registerFont(const FontID& id, const std::string& path)
 {
     FontID temp(id);
     TTF_Font* font = TTF_OpenFont(path.c_str(), 24);
-    if(font != nullptr)
-    {
+    if(font != nullptr) {
         fonts_.emplace(temp, font);
         return true;
-    }
-    else
-    {
+    } else {
         std::cout << "Font Load Error: " << path << std::endl;
     }
 
@@ -50,8 +46,7 @@ bool FontKeep::registerFont(const FontID& id, const std::string& path)
 TTF_Font* FontKeep::getFont(const FontID& id)
 {
     TTF_Font* ret(nullptr);
-    if(fonts_.count(id))
-    {
+    if(fonts_.count(id)) {
         ret = fonts_.at(id);
     }
     return ret;

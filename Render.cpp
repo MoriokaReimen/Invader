@@ -88,8 +88,7 @@ void Render::update()
 {
     this->clear();
     GameField* field = GameSystem::getField();
-    for(auto it = field->begin(); it != field->end(); ++it)
-    {
+    for(auto it = field->begin(); it != field->end(); ++it) {
         (*it)->draw(*this);
     }
     this->printHP();
@@ -106,10 +105,8 @@ void Render::printHP()
 {
     GameField* field = GameSystem::getField();
     int hp(0);
-    for(auto it = field->begin(); it != field->end(); ++it)
-    {
-        if((*it)->getType() == PLAYER)
-        {
+    for(auto it = field->begin(); it != field->end(); ++it) {
+        if((*it)->getType() == PLAYER) {
             hp = (*it)->getHP();
         }
     }
@@ -138,8 +135,7 @@ void Render::printScore()
 void Render::printGameOver()
 {
     GameStatus* status = GameSystem::getStatus();
-    if(status->isGameOver())
-    {
+    if(status->isGameOver()) {
         std::string msg("GAME OVER");
         this->renderText(BOLD_FONT, Eigen::Vector2f(250, 500), msg);
     }
@@ -150,8 +146,7 @@ void Render::printGameOver()
 void Render::printPlayerWin()
 {
     GameStatus* status = GameSystem::getStatus();
-    if(status->isPlayerWin())
-    {
+    if(status->isPlayerWin()) {
         std::string msg("YOU WIN");
         this->renderText(BOLD_FONT, Eigen::Vector2f(250, 500), msg);
     }
