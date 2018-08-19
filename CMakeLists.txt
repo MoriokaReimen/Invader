@@ -14,4 +14,4 @@ find_package(SDL2 REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 add_executable(Invader ${SOURCES})
-target_link_libraries(Invader ${SDL2_LIBRARIES} SDL2_image SDL2_ttf)
+target_link_libraries(Invader ${SDL2_LIBRARIES} SDL2_image SDL2_ttf SDL2_mixer)
