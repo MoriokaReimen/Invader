@@ -71,6 +71,9 @@ void Bomb::on_collide(std::shared_ptr<GameObject> other)
         field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]-20), Eigen::Vector2f(-10.0, -10.0))));
         field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]), Eigen::Vector2f(-10.0, 0.0))));
         field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]+20), Eigen::Vector2f(-10.0, 10.0))));
+
+        GameSound* sound = GameSystem::getSound();
+        sound->playSound(EXPLODE_SOUND);
     }
 
     return;

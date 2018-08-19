@@ -100,6 +100,9 @@ void Enemy::shoot(const Eigen::Vector2f& pos)
     GameField* field = GameSystem::getField();
     field->addObject(std::shared_ptr<GameObject>(new Bullet(bullet_pos, bullet_vel)));
 
+    GameSound* sound = GameSystem::getSound();
+    sound->playSound(SHOOT_SOUND);
+
     return;
 }
 

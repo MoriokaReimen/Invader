@@ -101,6 +101,9 @@ void Player::shoot(const Eigen::Vector2f& pos)
     GameField* field = GameSystem::getField();
     field->addObject(std::shared_ptr<GameObject>(new Bullet(bullet_pos, bullet_vel)));
 
+    GameSound* sound = GameSystem::getSound();
+    sound->playSound(SHOOT_SOUND);
+
     return;
 }
 
@@ -116,6 +119,9 @@ void Player::bomb(const Eigen::Vector2f& pos)
     bullet_pos[1] -= 20.0;
     GameField* field = GameSystem::getField();
     field->addObject(std::shared_ptr<GameObject>(new Bomb(bullet_pos, bullet_vel)));
+
+    GameSound* sound = GameSystem::getSound();
+    sound->playSound(SHOOT_SOUND);
 
     return;
 }

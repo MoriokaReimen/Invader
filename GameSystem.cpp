@@ -12,11 +12,13 @@
 #include<GameField.hpp>
 #include<GameStatus.hpp>
 #include<GameTime.hpp>
+#include<GameSound.hpp>
 
 InputKeep* GameSystem::input_keep;
 GameField* GameSystem::field;
 GameStatus* GameSystem::status;
 GameTime* GameSystem::time;
+GameSound* GameSystem::sound;
 
 /*!
  * @brief GameSystemを初期化する
@@ -27,6 +29,7 @@ void GameSystem::init()
     field = new GameField();
     status = new GameStatus();
     time = new GameTime(50);
+    sound = new GameSound();
 
     return;
 }
@@ -81,4 +84,14 @@ GameStatus* GameSystem::getStatus()
 GameTime* GameSystem::getTime()
 {
     return time;
+}
+
+/*!
+ * @brief GameSoundクラスへのポインタを返す
+ * @return GameSoundへのポインタ
+ * @warning GameSystem::initが先に呼ばれている必要があります
+ */
+GameSound* GameSystem::getSound()
+{
+    return sound;
 }

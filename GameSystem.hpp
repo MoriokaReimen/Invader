@@ -10,6 +10,7 @@
 #include<InputKeep.hpp>
 #include<GameField.hpp>
 #include<GameTime.hpp>
+#include<GameSound.hpp>
 
 /*!
  * \class GameSystem
@@ -21,6 +22,7 @@ class GameSystem
     static GameField* field; //!< ゲームオブジェクトとフィールドの管理クラス
     static GameStatus* status; //!< ゲームの状態クラス
     static GameTime* time; //!< ゲームの時間管理クラス
+    static GameSound* sound; //!< ゲームの音管理クラス
 
     GameSystem();
     GameSystem(const GameSystem& other);
@@ -34,4 +36,5 @@ public:
     static GameStatus* getStatus();
     static GameTime* getTime();
     static void cleanup();
+    static GameSound* getSound();
 };
