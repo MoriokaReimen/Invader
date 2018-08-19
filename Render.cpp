@@ -95,6 +95,7 @@ void Render::update()
     }
     this->printHP();
     this->printScore();
+    this->printTPF();
     this->printGameOver();
     this->printPlayerWin();
 
@@ -161,4 +162,18 @@ void Render::renderBackGround()
     this->renderImage(BACK_GROUND_IMAGE, 600, 1000, Eigen::Vector2f(0.0, 0.0));
 
     return;
+}
+
+void Render::printTPF()
+{
+    GameTime* time = GameSystem::getTime();
+    int tpf = time->getTPF();
+
+    char buff[125];
+    sprintf(buff, "TPF:%4d[ms]", tpf);
+    std::string msg(buff);
+    this->renderText(NORMAL_FONT, Eigen::Vector2f(460, 30), msg);
+
+    return;
+
 }
