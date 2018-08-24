@@ -14,7 +14,8 @@
 enum OBJECT_TYPE {
     PLAYER,
     ENEMY,
-    BULLET
+    BULLET,
+    ENEMY_BULLET
 };
 
 /*!

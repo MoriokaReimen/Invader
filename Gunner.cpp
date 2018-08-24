@@ -10,6 +10,7 @@
 #include<GameObject.hpp>
 #include<GameSystem.hpp>
 #include<Bullet.hpp>
+#include<EnemyBullet.hpp>
 
 #include<memory>
 #include<random>
@@ -119,7 +120,7 @@ void Gunner::shoot(const Eigen::Vector2f& pos)
         bullet_vel *= 10.0;
     }
 
-    field->addObject(std::shared_ptr<GameObject>(new Bullet(bullet_pos, bullet_vel)));
+    field->addObject(std::shared_ptr<GameObject>(new EnemyBullet(bullet_pos, bullet_vel)));
 
     GameSound* sound = GameSystem::getSound();
     sound->playSound(SHOOT_SOUND);

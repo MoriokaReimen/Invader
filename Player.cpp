@@ -130,7 +130,7 @@ void Player::on_collide(std::shared_ptr<GameObject> other)
 {
     if(!other) return;
     if(other.get() == this) return;
-    if(other->getType() == BULLET) {
+    if(other->getType() == ENEMY_BULLET) {
         this->hp_ -= 10;
     }
 
