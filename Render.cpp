@@ -17,6 +17,7 @@ Render::Render(Window& window)
     images_.registerImage(PLAYER_IMAGE, "./asset/Player.png");
     images_.registerImage(BULLET_IMAGE, "./asset/Bullet.png");
     images_.registerImage(ENEMY_IMAGE, "./asset/Enemy.png");
+    images_.registerImage(GUNNER_IMAGE, "./asset/Gunner.png");
     images_.registerImage(BOMB_IMAGE, "./asset/Bomb.png");
     images_.registerImage(BACK_GROUND_IMAGE, "./asset/Space.jpg");
 
