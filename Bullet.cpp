@@ -56,7 +56,7 @@ void Bullet::draw(Render& render)
 
 void Bullet::on_collide(std::shared_ptr<GameObject> other)
 {
-    if(other->getType() != BULLET)
+    if(other->getType() != BULLET && other->getType() != ENEMY_BULLET)
         this->hp_ = 0;
     return;
 }

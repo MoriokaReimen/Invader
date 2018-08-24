@@ -58,19 +58,20 @@ void Bomb::draw(Render& render)
 
 void Bomb::on_collide(std::shared_ptr<GameObject> other)
 {
-    Eigen::Vector2f bullet_pos(pos_);
-    Eigen::Vector2f bullet_vel(0.0, -0.2);
+    const int FRAGMENT_COUNT(20);
     GameField* field = GameSystem::getField();
-    if(other->getType() != BULLET) {
+    if(other->getType() != ENEMY_BULLET) {
         this->hp_ = 0;
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 20, pos_[1]), Eigen::Vector2f(10.0, 0.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 20, pos_[1]+20), Eigen::Vector2f(10.0, 10.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0], pos_[1]+20), Eigen::Vector2f(0.0, 10.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] + 20, pos_[1]-20), Eigen::Vector2f(10.0, -10.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]), Eigen::Vector2f(-10.0, 0.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]-20), Eigen::Vector2f(-10.0, -10.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]), Eigen::Vector2f(-10.0, 0.0))));
-        field->addObject(std::shared_ptr<GameObject>(new Bullet(Eigen::Vector2f(pos_[0] - 20, pos_[1]+20), Eigen::Vector2f(-10.0, 10.0))));
+
+        Eigen::Vector2f offset(20,0);
+        for(int i = 0; i < FRAGMENT_COUNT; ++i) {
+            Eigen::Rotation2D<float> rot(i * 2 * M_PI / FRAGMENT_COUNT);
+            Eigen::Vector2f init_pos = pos_ + rot * offset;
+            Eigen::Vector2f bullet_vel = init_pos - pos_;
+            bullet_vel = bullet_vel.normalized() * 10.0;
+            field->addObject(std::shared_ptr<GameObject>(new Bullet(init_pos, bullet_vel)));
+
+        }
 
         GameSound* sound = GameSystem::getSound();
         sound->playSound(EXPLODE_SOUND);
