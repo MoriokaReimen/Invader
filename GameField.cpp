@@ -99,7 +99,7 @@ void GameField::addObject(std::shared_ptr<GameObject>&& object)
 
 /*!
  * @brief 指定された位置のオブジェクトのポインタを取得する
- * @param center 位置のX座標
+ * @param[in] center 位置のX座標
  * @return オブジェクトへのポインタ
  * @warning オブジェクトがなければNULLポインタを返す
  */
@@ -133,3 +133,22 @@ std::vector<std::shared_ptr<GameObject>>::iterator GameField::end()
 {
     return this->objects_.end();
 }
+
+/*!
+ * @brief フィールド上のオブジェクトを検索する
+ * @param[in] 検索するオブジェクトのタイプ
+ * @return オブジェクトへのポインタ
+ * @warning オブジェクトがなければNULLポインタを返す
+ */
+std::shared_ptr<GameObject> GameField::find(const OBJECT_TYPE& type)
+{
+    for(auto it = this->begin(); it != this->end(); ++it) {
+        if((*it)->getType() == type) {
+            return *it;
+        }
+
+    }
+
+    return std::shared_ptr<GameObject>(nullptr);
+}
+
