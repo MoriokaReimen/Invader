@@ -133,6 +133,9 @@ void Player::on_collide(std::shared_ptr<GameObject> other)
     if(other->getType() == ENEMY_BULLET) {
         this->hp_ -= 10;
     }
+    if(other->getType() == LIFE_PACK) {
+        this->hp_ += 10;
+    }
 
     return;
 }

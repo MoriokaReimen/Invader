@@ -11,6 +11,7 @@
 #include<GameSystem.hpp>
 #include<Bullet.hpp>
 #include<EnemyBullet.hpp>
+#include<LifePack.hpp>
 
 #include<memory>
 #include<random>
@@ -26,6 +27,19 @@ const int ENEMY_HP(30);
 Enemy::Enemy(const Eigen::Vector2f& pos)
     : GameObject(ENEMY_HP, pos, Eigen::Vector2f::Zero(), ENEMY), generator_(), distribution_(0, 100)
 {
+}
+
+/*!
+ * @brief Enemyクラスのデストラクタ
+ */
+Enemy::~Enemy()
+{
+    auto status = GameSystem::getStatus();
+    status->addScore(10);
+
+    GameField* field = GameSystem::getField();
+    Eigen::Vector2f vel(0.0, 10);
+    field->addObject(std::shared_ptr<GameObject>(new LifePack(pos_, vel)));
 }
 
 /*!
@@ -67,15 +81,6 @@ void Enemy::update()
     }
 
     return;
-}
-
-/*!
- * @brief Enemyクラスのデストラクタ
- */
-Enemy::~Enemy()
-{
-    auto status = GameSystem::getStatus();
-    status->addScore(10);
 }
 
 /*!

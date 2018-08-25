@@ -11,6 +11,7 @@ enum ImageID {
     GUNNER_IMAGE,
     BULLET_IMAGE,
     BOMB_IMAGE,
+    LIFE_PACK_IMAGE,
     BACK_GROUND_IMAGE
 };
 

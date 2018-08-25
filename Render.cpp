@@ -19,6 +19,8 @@ Render::Render(Window& window)
     images_.registerImage(ENEMY_IMAGE, "./asset/Enemy.png");
     images_.registerImage(GUNNER_IMAGE, "./asset/Gunner.png");
     images_.registerImage(BOMB_IMAGE, "./asset/Bomb.png");
+    images_.registerImage(LIFE_PACK_IMAGE, "./asset/LifePack.png");
+
     images_.registerImage(BACK_GROUND_IMAGE, "./asset/Space.jpg");
 
     fonts_.init(*this);
