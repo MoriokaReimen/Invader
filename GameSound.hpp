@@ -13,4 +13,5 @@ public:
     GameSound();
     ~GameSound();
     void playSound(const SoundID& id);
+    void stopSound();
 };

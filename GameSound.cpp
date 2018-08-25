@@ -31,3 +31,10 @@ void GameSound::playSound(const SoundID& id)
 
     return;
 }
+
+void GameSound::stopSound()
+{
+    Mix_HaltChannel(-1);
+
+    return;
+}

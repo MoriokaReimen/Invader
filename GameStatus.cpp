@@ -53,6 +53,7 @@ void GameStatus::setGameOver()
 {
     if(!is_game_over_) {
         GameSound* sound = GameSystem::getSound();
+        sound->stopSound();
         sound->playSound(GAME_OVER_SOUND);
     }
     is_game_over_ = true;
