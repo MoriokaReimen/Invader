@@ -76,6 +76,7 @@ void Bomb::on_collide(std::shared_ptr<GameObject> other)
         }
 
         GameSound* sound = GameSystem::getSound();
+        sound->stopSound();
         sound->playSound(EXPLODE_SOUND);
     }
 
