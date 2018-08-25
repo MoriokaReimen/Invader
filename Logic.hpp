@@ -19,10 +19,14 @@ class Logic
 {
     GameField* field_;
 
+    std::random_device generator_; //!< 乱数ジェネレータ
+    std::uniform_int_distribution<int> distribution_; //!< 一様分布
+
     Logic(const Logic& other) = delete;
     Logic& operator=(const Logic& other) = delete;
 
     int countEnemy() const;
+    void spawnObject();
 public:
     Logic();
     ~Logic();

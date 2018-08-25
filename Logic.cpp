@@ -11,6 +11,8 @@
 #include<Player.hpp>
 #include<Enemy.hpp>
 #include<GameObject.hpp>
+#include<Gunner.hpp>
+#include<LifePack.hpp>
 
 #include<algorithm>
 #include<memory>
@@ -19,7 +21,7 @@
 /*!
  * @brief Logicクラスのコンストラクタ
  */
-Logic::Logic() : field_(GameSystem::getField())
+Logic::Logic() : field_(GameSystem::getField()), generator_(), distribution_(0, 500)
 {
     return;
 }
@@ -47,10 +49,7 @@ void Logic::update()
     if(key == GAME_END)
         status->setGameEnd();
 
-    /*!敵がいなくなればプレイヤーの勝利フラグを設定*/
-    if(0 == this->countEnemy()) {
-        status -> setPlayerWin();
-    }
+    spawnObject();
 
     resolveCollision();
 
@@ -119,4 +118,28 @@ bool Logic::isCollide(std::shared_ptr<GameObject> lhs, std::shared_ptr<GameObjec
     double distance = diff.cwiseAbs().sum();
     if(distance < 20.0) return true;
     return false;
+}
+
+void Logic::spawnObject()
+{
+    const int position = distribution_(generator_) / 500.0 * 530.0 + 20;
+    const int object_type = distribution_(generator_) % 100;
+
+    switch(object_type)
+    {
+        case 1:
+        case 2:
+            this->field_->addObject(std::shared_ptr<GameObject>(new Enemy(Eigen::Vector2f(position, 50))));
+            break;
+        case 3:
+            this->field_->addObject(std::shared_ptr<GameObject>(new Gunner(Eigen::Vector2f(position, 50))));
+            break;
+        case 4:
+            this->field_->addObject(std::shared_ptr<GameObject>(new LifePack(Eigen::Vector2f(position, 50), Eigen::Vector2f(0, 10))));
+            break;
+        default:
+            break;
+    }
+
+    return;
 }

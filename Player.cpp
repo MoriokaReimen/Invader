@@ -134,7 +134,7 @@ void Player::on_collide(std::shared_ptr<GameObject> other)
         this->hp_ -= 10;
     }
     if(other->getType() == LIFE_PACK) {
-        this->hp_ += 10;
+        this->hp_ += 50;
     }
 
     return;
