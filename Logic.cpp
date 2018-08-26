@@ -97,6 +97,7 @@ void Logic::resolveCollision()
 {
     GameField* field = GameSystem::getField();
     for(auto i = field->begin(); i != field->end(); ++i) {
+        if((*i)->getType() == BULLET) continue;
         for(auto j = i; j != field->end(); ++j) {
             if(isCollide(*i, *j)) {
                 (*i)->on_collide(*j);

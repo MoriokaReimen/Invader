@@ -150,3 +150,11 @@ std::shared_ptr<GameObject> GameField::find(const OBJECT_TYPE& type)
     return std::shared_ptr<GameObject>(nullptr);
 }
 
+/*!
+ * @brief フィールド上のオブジェクトの数を返す
+ * @return オブジェクトの数
+ */
+int GameField::countObjects()
+{
+    return this->objects_.size();
+}

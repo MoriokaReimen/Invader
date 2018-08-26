@@ -76,7 +76,7 @@ void Missile::explode()
 {
     this->hp_ = 0;
 
-    const int FRAGMENT_COUNT(20);
+    const int FRAGMENT_COUNT(30);
     Eigen::Vector2f offset(20,0);
     for(int i = 0; i < FRAGMENT_COUNT; ++i) {
         Eigen::Rotation2D<float> rot(i * 2 * M_PI / FRAGMENT_COUNT);

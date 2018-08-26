@@ -100,6 +100,7 @@ void Render::update()
     this->printHP();
     this->printScore();
     this->printTPF();
+    this->printObjectCount();
     this->printGameOver();
     this->printPlayerWin();
 
@@ -179,5 +180,14 @@ void Render::printTPF()
     this->renderText(NORMAL_FONT, Eigen::Vector2f(460, 30), msg);
 
     return;
+}
 
+void Render::printObjectCount()
+{
+    GameField* field = GameSystem::getField();
+    char buff[125];
+    sprintf(buff, "Object:%4d", field->countObjects());
+    std::string msg(buff);
+    this->renderText(NORMAL_FONT, Eigen::Vector2f(460, 60), msg);
+    return;
 }

@@ -34,4 +34,5 @@ public:
     std::vector<std::shared_ptr<GameObject>>::iterator begin();
     std::vector<std::shared_ptr<GameObject>>::iterator end();
     std::shared_ptr<GameObject> find(const OBJECT_TYPE& type);
+    int countObjects();
 };

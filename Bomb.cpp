@@ -58,7 +58,7 @@ void Bomb::draw(Render& render)
 
 void Bomb::on_collide(std::shared_ptr<GameObject> other)
 {
-    const int FRAGMENT_COUNT(20);
+    const int FRAGMENT_COUNT(40);
     GameField* field = GameSystem::getField();
     if(other->getType() != ENEMY_BULLET &&
        other->getType() != BULLET

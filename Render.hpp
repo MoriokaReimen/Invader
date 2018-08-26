@@ -28,4 +28,5 @@ public:
     void printPlayerWin();
     void printTPF();
     void renderBackGround();
+    void printObjectCount();
 };
