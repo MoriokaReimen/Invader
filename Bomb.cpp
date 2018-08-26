@@ -62,7 +62,7 @@ void Bomb::on_collide(std::shared_ptr<GameObject> other)
     GameField* field = GameSystem::getField();
     if(other->getType() != ENEMY_BULLET &&
        other->getType() != BULLET
-    ) {
+      ) {
         this->hp_ = 0;
 
         Eigen::Vector2f offset(20,0);

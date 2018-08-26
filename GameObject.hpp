@@ -16,7 +16,8 @@ enum OBJECT_TYPE {
     ENEMY,
     BULLET,
     ENEMY_BULLET,
-    LIFE_PACK
+    LIFE_PACK,
+    MISSILE
 };
 
 /*!

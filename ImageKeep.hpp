@@ -12,6 +12,7 @@ enum ImageID {
     BULLET_IMAGE,
     BOMB_IMAGE,
     LIFE_PACK_IMAGE,
+    MISSILE_IMAGE,
     BACK_GROUND_IMAGE
 };
 

@@ -56,8 +56,7 @@ void LifePack::draw(Render& render)
 
 void LifePack::on_collide(std::shared_ptr<GameObject> other)
 {
-    if(other->getType() == PLAYER)
-    {
+    if(other->getType() == PLAYER) {
         this->hp_ = 0;
     }
     return;

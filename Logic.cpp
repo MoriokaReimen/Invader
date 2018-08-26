@@ -13,6 +13,7 @@
 #include<GameObject.hpp>
 #include<Gunner.hpp>
 #include<LifePack.hpp>
+#include<Missile.hpp>
 
 #include<algorithm>
 #include<memory>
@@ -125,20 +126,22 @@ void Logic::spawnObject()
     const int position = distribution_(generator_) / 500.0 * 530.0 + 20;
     const int object_type = distribution_(generator_) % 100;
 
-    switch(object_type)
-    {
-        case 1:
-        case 2:
-            this->field_->addObject(std::shared_ptr<GameObject>(new Enemy(Eigen::Vector2f(position, 50))));
-            break;
-        case 3:
-            this->field_->addObject(std::shared_ptr<GameObject>(new Gunner(Eigen::Vector2f(position, 50))));
-            break;
-        case 4:
-            this->field_->addObject(std::shared_ptr<GameObject>(new LifePack(Eigen::Vector2f(position, 50), Eigen::Vector2f(0, 10))));
-            break;
-        default:
-            break;
+    switch(object_type) {
+    case 1:
+    case 2:
+        this->field_->addObject(std::shared_ptr<GameObject>(new Enemy(Eigen::Vector2f(position, 50))));
+        break;
+    case 3:
+        this->field_->addObject(std::shared_ptr<GameObject>(new Gunner(Eigen::Vector2f(position, 50))));
+        break;
+    case 4:
+        this->field_->addObject(std::shared_ptr<GameObject>(new LifePack(Eigen::Vector2f(position, 50), Eigen::Vector2f(0, 10))));
+        break;
+    case 5:
+        this->field_->addObject(std::shared_ptr<GameObject>(new Missile(Eigen::Vector2f(position, 50), Eigen::Vector2f(0, 10))));
+        break;
+    default:
+        break;
     }
 
     return;

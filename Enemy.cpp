@@ -112,8 +112,8 @@ void Enemy::on_collide(std::shared_ptr<GameObject> other)
     if(other.get() == this) return;
     if(other->getType() == BULLET) {
         this->hp_ -= 10;
-    auto status = GameSystem::getStatus();
-    status->addScore(10);
+        auto status = GameSystem::getStatus();
+        status->addScore(10);
     }
 
     return;
