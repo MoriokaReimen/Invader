@@ -32,8 +32,7 @@ B - 炸裂弾発射 shoot bomb
 
 ## Demo
 
-
-
+![Demo](https://github.com/MoriokaReimen/Invader/Demo.gif)
 
 ## Author
 MoriokaReimen
